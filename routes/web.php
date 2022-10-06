@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -25,15 +26,34 @@ Route::get('/clear-cache', function () {
 
     // #################### Frontend  ####################
 Route::get('/',[FrontendController::class, 'index'])->name('frontend');
+Route::get('/about', [FrontendController::class, 'about'])->name('frontend-about');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend-contact');
 
 // Auth::routes();
 Auth::routes();
 
-    // #################### Admin  ####################
+    /*
+     ==========================================================================
+     ============================= Admin ============================
+     ==========================================================================
+    */
 Route::group(['prefix'=>'admin','middleware' => ['admin','auth'], 'namespace'=>'Admin'], function (){
-    Route::get('dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
 
-    // #################### Admin Profile ####################
+    /*
+    ==========================================================================
+    ============================= Company Profile ============================
+    ==========================================================================
+    */
+    Route::get('company-profile', [CompanyProfileController::class, 'index'])->name('company-profile');
+    Route::post('company-profile/add', [CompanyProfileController::class, 'companyProfileDataAdd'])->name('company-profile-add');
+
+    /*
+    ===========================================================================
+    ===================== Admin Profile & Admin Dashboard =====================
+    ===========================================================================
+    */
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
+               // Admin profile part
     Route::get('profile', [AdminController::class, 'adminProfile'])->name('admin-profile');
     Route::post('profile/update', [AdminController::class, 'adminProfileUpdate'])->name('admin-profile-update');
     Route::get('image', [AdminController::class, 'adminProfileImage'])->name('admin-profile-image');
@@ -41,35 +61,56 @@ Route::group(['prefix'=>'admin','middleware' => ['admin','auth'], 'namespace'=>'
     Route::get('password', [AdminController::class, 'adminPassword'])->name('admin-password');
     Route::post('password/update', [AdminController::class, 'adminPasswordUpdate'])->name('admin-password-update');
 
-    // #################### Category Part ####################
+    /*
+     ==========================================================================
+     ============================= Category Part ============================
+     ==========================================================================
+    */
     Route::get('categories', [CategoryController::class, 'index'])->name('categories');
     Route::post('category/add', [CategoryController::class, 'categoryDataAdd'])->name('category-add');
     Route::get('category-edit/{id}', [CategoryController::class, 'categoryDataEdit'])->name('category-data-edit');
     Route::post('category-data/update', [CategoryController::class, 'categoryDataUpdate'])->name('category-data-update');
     Route::get('category-delete/{id}', [CategoryController::class, 'categoryDataDelete'])->name('category-data-delete');
 
-    // #################### Category Part ####################
+    /*
+     ==========================================================================
+     ============================= SubCategory Part ============================
+     ==========================================================================
+    */
     Route::get('subcategories', [CategoryController::class, 'subCategoryIndex'])->name('subcategories');
     Route::post('subcategory/add', [CategoryController::class, 'subCategoryAdd'])->name('subcategory-add');
     Route::get('subcategory-edit/{id}', [CategoryController::class, 'subcategoryDataEdit'])->name('subcategory-data-edit');
     Route::post('subcategory-data/update', [CategoryController::class, 'subcategoryDataUpdate'])->name('subcategory-data-update');
     Route::get('subcategory-delete/{id}', [CategoryController::class, 'subcategoryDataDelete'])->name('subcategory-data-delete');
 
-    // #################### Brand Part ####################
+    /*
+     ==========================================================================
+     ============================= Brand Part ============================
+     ==========================================================================
+    */
     Route::get('all-brand', [BrandController::class, 'index'])->name('brands');
     Route::post('brand/add', [BrandController::class, 'brandDataAdd'])->name('brand-add');
     Route::get('brand-edit/{id}', [BrandController::class, 'brandDataEdit'])->name('brand-data-edit');
     Route::post('brand-data/update', [BrandController::class, 'brandDataUpdate'])->name('brand-data-update');
     Route::get('brand-delete/{id}', [BrandController::class, 'brandDataDelete'])->name('brand-data-delete');
 
-    // #################### Product Part  ####################
+    /*
+     ==========================================================================
+     ============================= Product Part ============================
+     ==========================================================================
+    */
     Route::get('all-product', [ProductController::class, 'index'])->name('products');
     Route::post('product/add', [ProductController::class, 'productDataAdd'])->name('product-add');
     Route::get('product-edit/{id}', [ProductController::class, 'productDataEdit'])->name('brand-data-edit');
     Route::post('product-data/update', [ProductController::class, 'productDataUpdate'])->name('product-data-update');
     Route::get('product-delete/{id}', [ProductController::class, 'productDataDelete'])->name('product-data-delete');
 });
-    // #################### User Part  ####################
+
+    /*
+     ==========================================================================
+     ============================= User Part ============================
+     ==========================================================================
+    */
 Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'User'], function(){
     Route::get('dashboard', [UserController::class, 'index'])->name('user-dashboard');
     Route::post('update/data', [UserController::class, 'updateData'])->name('update-profile');
@@ -80,7 +121,11 @@ Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'User'
 
 });
 
-// #################### Ajax Request for select data  ####################
+    /*
+     ==========================================================================
+     ============================= Ajax Request for select data ============================
+     ==========================================================================
+    */
 Route::get('category-wise/subcategory/{id}', [CategoryController::class, 'categoryWiseSubcategory'])->name('category-wise-subcategory');
 Route::get('subcategory-wise/brands/{id}', [BrandController::class, 'subcategoryWiseBrandData'])->name('subcategory-wise-brand');
 

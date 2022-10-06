@@ -36,6 +36,9 @@
     {{-- tostr cdn --}}
     <link rel="stylesheet" href=" {{ asset('backend') }}/lib/toastr/toastr.min.css">
 
+    {{-- about & contact page design --}}
+    <link rel="stylesheet" href=" {{ asset('frontend') }}/assets/css/style.css ">
+
 </head>
 
 <body class="cnt-home">
@@ -106,6 +109,7 @@
                 toastr.warning("{{ session('warning') }}");
         @endif
       </script>
+
     <script src=" {{ asset('frontend') }}/assets/js/jquery-1.11.1.min.js"></script>
     <script src=" {{ asset('frontend') }}/assets/js/bootstrap.min.js"></script>
     <script src=" {{ asset('frontend') }}/assets/js/bootstrap-hover-dropdown.min.js"></script>
@@ -118,6 +122,8 @@
     <script src=" {{ asset('frontend') }}/assets/js/bootstrap-select.min.js"></script>
     <script src=" {{ asset('frontend') }}/assets/js/wow.min.js"></script>
     <script src=" {{ asset('frontend') }}/assets/js/scripts.js"></script>
+
+
 
 </body>
 
