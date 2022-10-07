@@ -53,7 +53,7 @@
         <!-- ================================== TOP NAVIGATION : END ================================== -->
 
         <!-- ============================================== HOT DEALS ============================================== -->
-        <div class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
+        {{-- <div class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
             <h3 class="section-title">hot deals</h3>
             <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
 
@@ -267,13 +267,13 @@
 
 
             </div><!-- /.sidebar-widget -->
-        </div>
+        </div> --}}
         <!-- ============================================== HOT DEALS: END ============================================== -->
 
 
         <!-- ============================================== SPECIAL OFFER ============================================== -->
 
-        <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+        {{-- <div class="sidebar-widget outer-bottom-small wow fadeInUp">
             <h3 class="section-title">Special Offer</h3>
             <div class="sidebar-widget-body outer-top-xs">
                 <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
@@ -572,10 +572,10 @@
                     </div>
                 </div>
             </div><!-- /.sidebar-widget-body -->
-        </div><!-- /.sidebar-widget -->
+        </div><!-- /.sidebar-widget --> --}}
         <!-- ============================================== SPECIAL OFFER : END ============================================== -->
         <!-- ============================================== PRODUCT TAGS ============================================== -->
-        <div class="sidebar-widget product-tag wow fadeInUp">
+        {{-- <div class="sidebar-widget product-tag wow fadeInUp">
             <h3 class="section-title">Product tags</h3>
             <div class="sidebar-widget-body outer-top-xs">
                 <div class="tag-list">
@@ -590,11 +590,11 @@
                     <a class="item" title="Rose" href="category.html">Rose</a>
                 </div><!-- /.tag-list -->
             </div><!-- /.sidebar-widget-body -->
-        </div><!-- /.sidebar-widget -->
+        </div><!-- /.sidebar-widget --> --}}
         <!-- ============================================== PRODUCT TAGS : END ============================================== -->
         <!-- ============================================== SPECIAL DEALS ============================================== -->
 
-        <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+        {{-- <div class="sidebar-widget outer-bottom-small wow fadeInUp">
             <h3 class="section-title">Special Deals</h3>
             <div class="sidebar-widget-body outer-top-xs">
                 <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
@@ -895,10 +895,10 @@
                     </div>
                 </div>
             </div><!-- /.sidebar-widget-body -->
-        </div><!-- /.sidebar-widget -->
+        </div><!-- /.sidebar-widget --> --}}
         <!-- ============================================== SPECIAL DEALS : END ============================================== -->
         <!-- ============================================== NEWSLETTER ============================================== -->
-        <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small">
+        {{-- <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small">
             <h3 class="section-title">Newsletters</h3>
             <div class="sidebar-widget-body outer-top-xs">
                 <p>Sign Up for Our Newsletter!</p>
@@ -911,11 +911,11 @@
                     <button class="btn btn-primary">Subscribe</button>
                 </form>
             </div><!-- /.sidebar-widget-body -->
-        </div><!-- /.sidebar-widget -->
+        </div><!-- /.sidebar-widget --> --}}
         <!-- ============================================== NEWSLETTER: END ============================================== -->
 
         <!-- ============================================== Testimonials============================================== -->
-        <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
+        {{-- <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
             <div id="advertisement" class="advertisement">
                 <div class="item">
                     <div class="avatar"><img src=" {{ asset('frontend') }}/assets/images/testimonials/member1.png"
@@ -944,13 +944,7 @@
                 </div><!-- /.item -->
 
             </div><!-- /.owl-carousel -->
-        </div>
-
-        <!-- ============================================== Testimonials: END ============================================== -->
-
-        <div class="home-banner">
-            <img src=" {{ asset('frontend') }}/assets/images/banners/LHS-banner.jpg" alt="Image">
-        </div>
+        </div> --}}
 
 
 
@@ -1094,8 +1088,8 @@
                                             <div class="tag new"><span>new</span></div>
                                         </div><!-- /.product-image -->
 
-
                                         <div class="product-info text-left">
+
                                             <h3 class="name"><a href="#"> {{ $product->product_name_en }} </a>
                                             </h3>
                                             <div class="rating rateit-small"></div>
@@ -1103,9 +1097,11 @@
 
                                             <div class="product-price">
                                                 <span class="price">
-                                                    ${{ $product->product_sale_price }} </span>
-                                                <span class="price-before-discount">${{ $product->product_actual_price }} </span>
-
+                                                    ${{ $product->product_sale_price }}
+                                                </span>
+                                                <span class="price-before-discount">
+                                                    ${{ $product->product_actual_price }}
+                                                </span>
                                             </div><!-- /.product-price -->
 
                                         </div><!-- /.product-info -->
@@ -1120,7 +1116,6 @@
                                                         </button>
                                                         <button class="btn btn-primary cart-btn"
                                                             type="button">Add to cart</button>
-
                                                     </li>
 
                                                     <li class="lnk wishlist">
@@ -1139,8 +1134,8 @@
                                                 </ul>
                                             </div><!-- /.action -->
                                         </div><!-- /.cart -->
-                                    </div><!-- /.product -->
 
+                                    </div><!-- /.product -->
                                 </div><!-- /.products -->
                             </div><!-- /.item -->
 
