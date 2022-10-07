@@ -14,6 +14,7 @@
           <span class="menu-item-label">Visit Site</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
+
       <a href=" {{ route('admin-dashboard') }} " class="sl-menu-link @yield('dashboard')">
         <div class="sl-menu-item">
           {{-- <i class="fa fa-universal-access" aria-hidden="true"></i> --}}
@@ -21,6 +22,16 @@
           <span class="menu-item-label">Dashboard</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
+
+
+      <a href=" {{ route('user-create') }} " class="sl-menu-link @yield('user-create')">
+        <div class="sl-menu-item">
+          {{-- <i class="fa fa-universal-access" aria-hidden="true"></i> --}}
+          <i class="fa fa-user-circle tx-20"></i>
+          <span class="menu-item-label">Create User</span>
+        </div><!-- menu-item -->
+      </a><!-- sl-menu-link -->
+
       <a href=" {{ route('company-profile') }} " class="sl-menu-link @yield('company-profile')">
         <div class="sl-menu-item">
           {{-- <i class="fa fa-universal-access" aria-hidden="true"></i> --}}
@@ -28,6 +39,7 @@
           <span class="menu-item-label">Company Profile</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
+
       <a href="#" class="sl-menu-link @yield('categories')">
         <div class="sl-menu-item">
           <i class="menu-item-icon fa fa-th tx-20"></i>

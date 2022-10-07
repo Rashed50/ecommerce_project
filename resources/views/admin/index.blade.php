@@ -7,7 +7,6 @@
 
 <nav class="breadcrumb sl-breadcrumb">
     <span class="breadcrumb-item active">Dashboard</span>
-    <a class="breadcrumb-item" href="index.html">Profile Settings</a>
 </nav>
 
 <div class="sl-pagebody">

@@ -17,6 +17,10 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function userCreate(){
+       return view('admin.user.register');
+    }
+
     public function adminProfile(){
         return view('admin.profile.index');
     }
