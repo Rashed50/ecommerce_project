@@ -53,6 +53,7 @@ Route::group(['prefix'=>'admin','middleware' => ['admin','auth'], 'namespace'=>'
     ===========================================================================
     */
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
+    Route::get('user-create', [AdminController::class, 'userCreate'])->name('user-create');
                // Admin profile part
     Route::get('profile', [AdminController::class, 'adminProfile'])->name('admin-profile');
     Route::post('profile/update', [AdminController::class, 'adminProfileUpdate'])->name('admin-profile-update');

@@ -37,7 +37,7 @@
     <link rel="stylesheet" href=" {{ asset('backend') }}/lib/toastr/toastr.min.css">
 
     {{-- about & contact page design --}}
-    <link rel="stylesheet" href=" {{ asset('frontend') }}/assets/css/style.css ">
+    {{-- <link rel="stylesheet" href=" {{ asset('frontend') }}/assets/css/style.css "> --}}
 
 </head>
 

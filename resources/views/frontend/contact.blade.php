@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="about-heading text-center">
-                    <h2>Contact</h2>
+                    <h2>Contact Us</h2>
                     <!-- <p><a href="index.html">home</a> <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i> <span>contact</span></p> -->
                 </div>
             </div>
@@ -77,9 +77,7 @@
     <!-- contact part End -->
 
     <br><br><br><br><br>
-
-    <br><br><br><br><br>
 </div><!-- /.row -->
 @include('frontend.layouts.footer-slider')
-
+<br>
 @endsection
