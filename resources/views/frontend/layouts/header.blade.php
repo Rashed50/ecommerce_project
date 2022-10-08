@@ -1,9 +1,10 @@
 <header class="header-style-1">
 
     <!-- ============================================== TOP MENU ============================================== -->
-    <div class="top-bar animate-dropdown" >
+    <div class="top-bar animate-dropdown">
         <div class="container">
             <div class="row">
+                <!--Company Logo-->
                 <div class="col-md-2">
                     <!-- ============================================================= LOGO ============================================================= -->
                     @php
@@ -14,7 +15,7 @@
                         <a href="home.html">
 
                             {{-- <img src=" {{ asset('frontend') }}/assets/images/logo.png" alt="header-image"
-                                height="70px" width="100px"> --}}
+                            height="70px" width="100px"> --}}
                             <img src=" {{ asset($companyData->comp_profile_img) }} " alt="" height="80" width="100">
 
                         </a>
@@ -23,48 +24,13 @@
                     @endforeach
 
                 </div>
-
-                <!-- ============================================== Search : Start ============================================== -->
                 <div class="col-md-6">
-                    <!-- ============================================== TOP MENU : END ============================================== -->
-                    <div class="main-header">
-
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
-                                <!-- ============================================================= LOGO ============================================================= -->
-                                <div class="logo">
-                                    {{-- <a href="home.html">
-
-                                        <img src="assets/images/logo.png" alt="">
-
-                                    </a> --}}
-                                </div><!-- /.logo -->
-                                <!-- ============================================================= LOGO : END ============================================================= -->
-                            </div><!-- /.logo-holder -->
-
-                            <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder">
-                                <!-- /.contact-row -->
-                                <!-- ============================================================= SEARCH AREA ============================================================= -->
-                                <div class="search-area" style="margin-top: 25px; margin-left:20px;">
-                                    <form>
-                                        <div class="control-group">
-
-                                            <input class="search-field" placeholder="Search here..." />
-
-                                            <a class="search-button" href="#"></a>
-
-                                        </div>
-                                    </form>
-                                </div><!-- /.search-area -->
-                                <!-- ============================================================= SEARCH AREA : END ============================================================= -->
-                            </div><!-- /.top-search-holder -->
-                        </div><!-- /.row -->
-
-                    </div><!-- /.main-header -->
+                    <!-- Moving Text-->
+                    <marquee style="color:red;font-size:40px;padding: 30px;font-family: Arial, Helvetica, sans-serif;">A scrolling text created with HTML Marquee element.</marquee>
                 </div>
-                <!-- ============================================== Search : END ============================================== -->
+                <!-- Checkout Login/Logout Menu-->
                 <div class="col-md-4">
-                    <div class="header-top-inner" style="margin-top: 30px;">
+                    <div class="header-top-inner" style="margin-top: 20px;">
                         <div class="cnt-account">
                             <ul class="list-unstyled">
                                 <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
@@ -105,8 +71,7 @@
         <div class="container">
             <div class="yamm navbar navbar-default" role="navigation">
                 <div class="navbar-header">
-                    <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse"
-                        class="navbar-toggle collapsed" type="button">
+                    <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -134,8 +99,7 @@
                                 @endphp
                                 @foreach ($categories as $category)
                                 <li class="dropdown yamm mega-menu">
-                                    <a href="home.html" data-hover="dropdown" class="dropdown-toggle"
-                                        data-toggle="dropdown"> {{ $category->category_name_en }} </a>
+                                    <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"> {{ $category->category_name_en }} </a>
                                     <ul class="dropdown-menu container">
                                         <li>
                                             <div class="yamm-content ">

@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title', 'Easy Shopping')
+@section('title', 'Zeal Hair Fashion')
 @section('content')
 <div class="row">
     <!-- About Banner Start -->
