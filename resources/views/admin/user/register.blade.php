@@ -34,6 +34,7 @@ active
                 </div>
                 <div class="col-md-2"></div>
             </div>
+            <!-- create a new account -->
             <div class="card">
                 <h3 class="text-center mt-4"><span class="text-danger">Hi...!</span><strong class="text-primary">
                         {{Auth::user()->name}} </strong>Create A New User Here</h3>
@@ -97,6 +98,7 @@ active
                         <button type="submit" class="btn-upper btn btn-primary checkout-page-button"> {{ __('Register') }}</button>
                     </form>
                 </div>
+                <!-- create a new account -->
             </div>
         </div>
         <div class="col-md-2"></div>
