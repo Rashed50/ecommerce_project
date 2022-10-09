@@ -131,7 +131,7 @@ class BrandController extends Controller
                 'brand_name_bn' => $request->brand_name_bn,
                 'brand_slug_en' => strtolower(str_replace(' ','-', $request->brand_name_en)),
                 'brand_slug_bn' => strtolower(str_replace(' ','-', $request->brand_name_bn)),
-                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
 
             if($brand){
@@ -153,6 +153,7 @@ class BrandController extends Controller
         unlink($img);
 
         $brandData = Brand::where('brand_id', $id)->delete();
+
         if($brandData){
             // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
             return redirect()->route('brands')->with('message','Brand Data Deleted Successfully'); //Toastr alert

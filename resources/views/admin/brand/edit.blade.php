@@ -10,7 +10,7 @@ active
 
 <nav class="breadcrumb sl-breadcrumb">
     <span class="breadcrumb-item active">Dashboard</span>
-    <a class="breadcrumb-item" href="">All Brands</a>
+    <a class="breadcrumb-item" href="">Brand Data Edit</a>
 </nav>
 
 <div class="sl-pagebody">
@@ -102,13 +102,14 @@ active
                     <div class="row mg-t-20  form-group {{ $errors->has('brand_image') ? ' has-error' : '' }}">
                         <label class="col-sm-4 form-control-label">Brand Image: <span class="tx-danger">*</span></label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                            <input type="file" class="custom-file-input" name="brand_image"
+                            <input type="file" class="custom-file-input" name="brand_image" id="brandImg"
                                 value=" {{ $brandData->brand_image }} ">
                             <span class="custom-file-control custom-file-control-inverse">
                                 @error('brand_image')
                                 <span class="text-danger"> {{ $message }} </span>
                                 @enderror
                             </span>
+                            <div class="row" id="preview_image"></div>
                         </div>
                     </div>
                     <div class="form-layout-footer mg-t-30  form-group">
@@ -122,3 +123,40 @@ active
 </div>
 <br><br><br><br><br><br><br><br><br><br>
 @endsection
+@section('scripts')
+<script>
+    //  ################## Selected Image preview ###################
+    $(document).ready(function () {
+        $('#brandImg').on('change', function () { //on file input change
+            if (window.File && window.FileReader && window.FileList && window
+                .Blob) //check File API supported browser
+            {
+                var data = $(this)[0].files; //this file data
+
+                $.each(data, function (index, file) { //loop though each file
+                    if (/(\.|\/)(gif|jpe?g|png)$/i.test(file
+                        .type)) { //check supported file type
+                        var fRead = new FileReader(); //new filereader
+                        fRead.onload = (function (file) { //trigger function on successful read
+                            return function (e) {
+                                var img = $('<img/>').addClass('thumb').attr('src',
+                                    e.target.result).width(80)
+                                    .height(80); //create image element
+                                $('#preview_image').append(
+                                    img); //append image to output element
+                            };
+                        })(file);
+                        fRead.readAsDataURL(file); //URL representing the file's data.
+                    }
+                });
+
+            } else {
+                alert("Your browser doesn't support File API!"); //if File API is absent
+            }
+        });
+    });
+
+
+</script>
+@endsection
+
