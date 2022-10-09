@@ -137,6 +137,25 @@ class BannerController extends Controller
         }
     }
 
+    public function bannerDataDelete($id){
+        // dd('This is for Delete request');
+
+        $banner = Banner::where('banner_id', $id)->first();
+        $img = $banner->banner_img;
+        unlink($img);
+
+        $bannerData = Banner::where('banner_id', $id)->delete();
+
+        if($bannerData){
+            // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
+            return redirect()->route('banners')->with('message','Banner Data Deleted Successfully'); //Toastr alert
+        }else {
+            // Session::flash('error', 'Somthing Went wrong! Please try again later');
+            Session::flash('error', 'Somthing Went wrong! Please try again later');
+            return redirect()->back();
+        }
+    }
+
 
 
 }

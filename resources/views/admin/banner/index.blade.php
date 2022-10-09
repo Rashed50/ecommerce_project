@@ -140,7 +140,7 @@ active
                                     <a href=" {{ url('admin/banner-edit/'. $banner->banner_id) }} "
                                         class="btn btn-primary" title="Edit"><i
                                             class="tx-18 fa fa-pencil-square-o"></i></a>
-                                    <a href=" {{ url('admin/banner-edit/'. $banner->banner_id) }} "
+                                    <a href=" {{ url('admin/banner-delete/'. $banner->banner_id) }} "
                                         class="btn btn-danger" title="Delete" id="delete"><i
                                             class="tx-18 fa fa-trash"></i></a>
                                 </td>

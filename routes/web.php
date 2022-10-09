@@ -115,6 +115,7 @@ Route::group(['prefix'=>'admin','middleware' => ['admin','auth'], 'namespace'=>'
     Route::post('banner/add', [BannerController::class, 'bannerDataAdd'])->name('banner-add');
     Route::get('banner-edit/{id}', [BannerController::class, 'bannerDataEdit'])->name('banner-data-edit');
     Route::post('banner-data/update', [BannerController::class, 'bannerDataUpdate'])->name('banner-data-update');
+    Route::get('banner-delete/{id}', [BannerController::class, 'bannerDataDelete'])->name('banner-data-delete');
 });
 
     /*
