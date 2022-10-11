@@ -76,12 +76,14 @@ class BannerController extends Controller
             'banner_title_bn' => 'required',
             'banner_subtitle_en' => 'required',
             'banner_subtitle_bn' => 'required',
+            'brand_status' => 'required',
             'banner_img' => 'required',
         ],[
             'banner_title_en.required' => 'Please Enter Banner Title In English name',
             'banner_title_bn.required' => 'Please Enter Banner Title In Bangla name',
             'banner_subtitle_en.required' => 'Please Enter Banner Title In English',
             'banner_subtitle_bn.required' => 'Please Enter Banner Title In Bangla',
+            'brand_status.required' => 'Please Choose Banner Status',
             'banner_img.required' => 'Please Choose Banner Image',
         ]);
         // dd('After Validation');
@@ -103,6 +105,7 @@ class BannerController extends Controller
                 'banner_subtitle_bn' => $request->banner_subtitle_bn,
                 'banner_slug_en' => strtolower(str_replace(' ','-', $request->banner_title_en)),
                 'banner_slug_bn' => strtolower(str_replace(' ','-', $request->banner_title_bn)),
+                'banner_status' => $request->brand_status,
                 'banner_img' => $save_url,
                 'updated_at' => Carbon::now(),
             ]);
@@ -123,6 +126,7 @@ class BannerController extends Controller
                 'banner_subtitle_bn' => $request->banner_subtitle_bn,
                 'banner_slug_en' => strtolower(str_replace(' ','-', $request->banner_title_en)),
                 'banner_slug_bn' => strtolower(str_replace(' ','-', $request->banner_title_bn)),
+                'banner_status' => $request->brand_status,
                 'updated_at' => Carbon::now(),
             ]);
 
