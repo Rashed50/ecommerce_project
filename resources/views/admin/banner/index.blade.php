@@ -116,7 +116,7 @@ active
                             <tr>
                                 <th class="wd-20p">Banner Img</th>
                                 <th class="wd-25p">Banner Title EN</th>
-                                <th class="wd-25p">Banner Sub Title EN</th>
+                                <th class="wd-25p">Created At</th>
                                 <th class="wd-15p">Status</th>
                                 <th class="wd-15p">Action</th>
                             </tr>
@@ -128,7 +128,7 @@ active
                                     <img src=" {{ asset($banner->banner_img) }} " alt="" style="width: 100px">
                                 </td>
                                 <td> {{ $banner->banner_title_en }} </td>
-                                <td> {{ $banner->banner_subtitle_en }} </td>
+                                <td> {{ Carbon\Carbon::parse($banner->created_at)->format('D, d F Y') }} </td>
                                 <td>
                                     @if ($banner->banner_status == 1)
                                         <span class="badge badge-pill badge-success">Active</span>
