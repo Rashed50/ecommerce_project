@@ -19,7 +19,6 @@
 
                         </a>
                     </div><!-- /.logo -->
-
                     @endforeach
 
                 </div>
