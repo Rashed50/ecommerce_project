@@ -32,7 +32,6 @@
                                     <div class="col-sm-12 col-md-3">
                                         @foreach ($subcategories as $subcategory)
                                             <ul class="links list-unstyled">
-                                                <li><a href="#" class="text-primary"> Our Product Category </a></li>
                                                 <li><a href="#"> {{ $subcategory->subcategory_name_en }} </a></li>
                                             </ul>
                                         @endforeach
@@ -950,62 +949,40 @@
 
     <!-- ============================================== CONTENT ============================================== -->
     <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
-        <!-- ========================================== SECTION – HERO ========================================= -->
+        <!-- ========================================== SECTION – Slider Part Start ========================================= -->
 
+        @php
+            $banners = App\Models\Banner::where('banner_status', 1)->orderBy('banner_id', 'DESC')->limit(5)->get();
+        @endphp
         <div id="hero">
             <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+                @foreach ($banners as $banner)
+                    <div class="item" style="background-image: url({{ asset($banner->banner_img) }});">
+                        <div class="container-fluid">
+                            <div class="caption bg-color vertical-center text-left">
+                                <div class="slider-header fadeInDown-1">Top Brands1</div>
+                                <div class="big-text fadeInDown-1">
+                                    {{ $banner->banner_title_en }}
+                                </div>
 
-                <div class="item" style="background-image: url( {{ asset('frontend') }}/assets/images/sliders/01.jpg);">
-                    <div class="container-fluid">
-                        <div class="caption bg-color vertical-center text-left">
-                            <div class="slider-header fadeInDown-1">Top Brands</div>
-                            <div class="big-text fadeInDown-1">
-                                New Collections
-                            </div>
+                                <div class="excerpt fadeInDown-2 hidden-xs">
 
-                            <div class="excerpt fadeInDown-2 hidden-xs">
+                                    <span> {{ $banner->banner_subtitle_en }} </span>
 
-                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-
-                            </div>
-                            <div class="button-holder fadeInDown-3">
-                                <a href="index6c11.html?page=single-product"
-                                    class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
-                                    Now</a>
-                            </div>
-                        </div><!-- /.caption -->
-                    </div><!-- /.container-fluid -->
-                </div><!-- /.item -->
-
-                <div class="item" style="background-image: url( {{ asset('frontend') }}/assets/images/sliders/02.jpg);">
-                    <div class="container-fluid">
-                        <div class="caption bg-color vertical-center text-left">
-                            <div class="slider-header fadeInDown-1">Spring 2016</div>
-                            <div class="big-text fadeInDown-1">
-                                Women <span class="highlight">Fashion</span>
-                            </div>
-
-                            <div class="excerpt fadeInDown-2 hidden-xs">
-
-                                <span>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                    fugit</span>
-
-                            </div>
-                            <div class="button-holder fadeInDown-3">
-                                <a href="index6c11.html?page=single-product"
-                                    class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
-                                    Now</a>
-                            </div>
-                        </div><!-- /.caption -->
-                    </div><!-- /.container-fluid -->
-                </div><!-- /.item -->
-
-
-
+                                </div>
+                                <div class="button-holder fadeInDown-3">
+                                    <a href="index6c11.html?page=single-product"
+                                        class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
+                                        Now</a>
+                                </div>
+                            </div><!-- /.caption -->
+                        </div><!-- /.container-fluid -->
+                    </div><!-- /.item -->
+                @endforeach
             </div><!-- /.owl-carousel -->
         </div>
 
-        <!-- ========================================= SECTION – HERO : END ========================================= -->
+        <!-- ========================================= SECTION – Slider Part End  ========================================= -->
 
         <!-- ============================================== INFO BOXES ============================================== -->
         <div class="info-boxes wow fadeInUp">
