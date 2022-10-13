@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-6">
                     <!-- Moving Text-->
-                    <marquee style="color:red;font-size:40px;padding: 30px;font-family: Arial, Helvetica, sans-serif;">A scrolling text created with HTML Marquee element.</marquee>
+                    <marquee style="color:red;font-size:40px;padding: 30px;font-family: Arial, Helvetica, sans-serif;">A great hairstyle is the best accessory. The right hairstyle can make a plain woman beautiful & a beautiful woman unforgettable.</marquee>
                 </div>
                 <!-- Checkout Login/Logout Menu-->
                 <div class="col-md-4">

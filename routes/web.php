@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 // cache clear route /
+// ALTER TABLE `employee_in_outs` CHANGE `emp_io_id` `emp_io_id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 Route::get('/clear-cache', function () {
     $run = Artisan::call('config:clear');
