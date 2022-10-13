@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyProfileController;
@@ -106,6 +107,16 @@ Route::group(['prefix'=>'admin','middleware' => ['admin','auth'], 'namespace'=>'
     Route::get('product-edit/{id}', [ProductController::class, 'productDataEdit'])->name('brand-data-edit');
     Route::post('product-data/update', [ProductController::class, 'productDataUpdate'])->name('product-data-update');
     Route::get('product-delete/{id}', [ProductController::class, 'productDataDelete'])->name('product-data-delete');
+    /*
+     ==========================================================================
+     ============================= Product Part ============================
+     ==========================================================================
+    */
+    Route::get('banner', [BannerController::class, 'index'])->name('banners');
+    Route::post('banner/add', [BannerController::class, 'bannerDataAdd'])->name('banner-add');
+    Route::get('banner-edit/{id}', [BannerController::class, 'bannerDataEdit'])->name('banner-data-edit');
+    Route::post('banner-data/update', [BannerController::class, 'bannerDataUpdate'])->name('banner-data-update');
+    Route::get('banner-delete/{id}', [BannerController::class, 'bannerDataDelete'])->name('banner-data-delete');
 });
 
     /*

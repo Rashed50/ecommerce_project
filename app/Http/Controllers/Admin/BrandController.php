@@ -134,10 +134,10 @@ class BrandController extends Controller
             $brand = Brand::where('brand_id', $brand_id)->update([
                 'brand_name_en' => $request->brand_name_en,
                 'brand_name_bn' => $request->brand_name_bn,
-                'brand_slug_en' => strtolower(str_replace(' ', '-', $request->brand_name_en)),
-                'brand_slug_bn' => strtolower(str_replace(' ', '-', $request->brand_name_bn)),
-                'created_at' => Carbon::now(),
-            ]);
+                'brand_slug_en' => strtolower(str_replace(' ','-', $request->brand_name_en)),
+                'brand_slug_bn' => strtolower(str_replace(' ','-', $request->brand_name_bn)),
+                'updated_at' => Carbon::now(),
+             ]);
 
             if ($brand) {
                 // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
@@ -159,12 +159,11 @@ class BrandController extends Controller
         unlink($img);
 
         $brandData = Brand::where('brand_id', $id)->delete();
-        if ($brandData) {
-            // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
-            return redirect()->route('brands')->with('message', 'Brand Data Deleted Successfully'); //Toastr alert
+ 
+        if($brandData){
+             return redirect()->route('brands')->with('message', 'Brand Data Deleted Successfully'); //Toastr alert
         } else {
-            // Session::flash('error', 'Somthing Went wrong! Please try again later');
-            Session::flash('error', 'Somthing Went wrong! Please try again later');
+             Session::flash('error', 'Somthing Went wrong! Please try again later');
             return redirect()->back();
         }
     }
