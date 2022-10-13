@@ -6,15 +6,22 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    <meta name="description" content="A E-commerce website">
+    <meta name="author" content="Waliul Hasan">
+    <meta name="keywords" content="Online, Shopping, eCommerce, Online Service, Buy">
     <meta name="robots" content="all">
 
     <title> @yield('title') </title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href=" {{ asset('frontend') }}/assets/css/bootstrap.min.css">
+    <!-- Favicon -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href=" {{ asset('frontend') }}/assets/images/favicon_io/apple-touch-icon.png ">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href=" {{ asset('fav') }} ">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
     <!-- Customizable CSS -->
     <link rel="stylesheet" href=" {{ asset('frontend') }}/assets/css/main.css">
