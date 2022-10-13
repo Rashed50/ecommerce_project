@@ -11,6 +11,7 @@
 </nav>
 <br><br>
 <div class="sl-pagebody">
+    {{-- Form Part start   --}}
     <div class="row row-sm">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -270,6 +271,44 @@
         </div>
         <div class="col-md-2"></div>
     </div><!-- row -->
+    {{-- Form Part End   --}}
+    <br><br>
+    {{-- Table Part Start --}}
+    <div class="row row-sm">
+        <div class="col-md-12">
+            <div class="card pd-20 pd-sm-40">
+                <h6 class="card-body-title">All Banner</h6>
+                <br>
+                <div class="table-wrapper">
+                    <table id="datatable1" class="table display responsive nowrap">
+                        <thead class="bg-info">
+                            <tr>
+                                <th>Profile Img</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            @foreach ($profileData as $profile )
+                                <tr>
+                                    <td>
+                                        <img src="{{ asset($profile->comp_profile_img) }}" alt="" style="width: 100px">
+                                    </td>
+                                    <td> {{ $profile->comp_name_en }} </td>
+                                    <td> {{ $profile->comp_email1 }} </td>
+                                    <td> {{ $profile->comp_phone1 }} </td>
+                                    <td> {{ $profile->comp_address }} </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div><!-- table-wrapper -->
+            </div><!-- card -->
+        </div>
+    </div>
+    {{-- Table Part End --}}
 </div>
 <br><br><br><br><br><br><br><br><br><br>
 @endsection

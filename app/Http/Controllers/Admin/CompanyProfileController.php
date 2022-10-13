@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Session;
 class CompanyProfileController extends Controller
 {
     public function index(){
-        return view('admin.company-profile.index');
+        $profileData = CompanyProfile::latest()->get();
+        return view('admin.company-profile.index', compact('profileData'));
     }
 
     public function companyProfileDataAdd(Request $request){
