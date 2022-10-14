@@ -51,7 +51,7 @@
                         <ul class='list-unstyled'>
                             <li><a href="#" title="faq">FAQ</a></li>
                             <li class="last"><a href="#" title="Where is my order?">Help Center</a></li>
-                            <li class="last"><a href="#" title="Send us feedback"> {{  $companyInfo->comp_email1 }} </a></li>
+                            <li class="last"><a href="mailto: {{  $companyInfo->comp_email1 }}" title="Send us feedback"> {{  $companyInfo->comp_email1 }} </a></li>
                         </ul>
                     </div><!-- /.module-body -->
                 </div><!-- /.col -->

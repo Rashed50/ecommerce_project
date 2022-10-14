@@ -3259,7 +3259,7 @@ age-container #owl-main .owl-next {
   font-family: 'Open Sans', sans-serif;
 }
 .footer .contact-information .media .media-body a {
-  color: #666666;
+  color: #e9e1e1;
 }
 .footer .footer-bottom {
   background: #202020;
@@ -3280,11 +3280,8 @@ age-container #owl-main .owl-next {
   font-family: 'Open Sans', sans-serif;
   color: #898989;
 }
-.footer .footer-bottom .module-body ul li {
 
-}
-
-.toggle-footer {color:rgb(146, 141, 141)}
+.toggle-footer {color:rgb(201, 195, 195)}
 .toggle-footer a {margin:0px!important}
 .toggle-footer a:before {display:none}
 .toggle-footer i{background:#333; border-radius:4px; font-size: 20px;}
@@ -3294,7 +3291,7 @@ age-container #owl-main .owl-next {
 .footer .footer-bottom .module-body ul li a {
   font-size: 13px;
   line-height: 25px;
-  color: #9c9898;
+  color: #c2bebe;
   position: relative;
   margin-left: 23px;
   display: block;
