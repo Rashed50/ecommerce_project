@@ -17,7 +17,7 @@
                     <li class="dropdown menu-item">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             {{-- <i class="icon fa fa-shopping-bag" aria-hidden="true"></i> --}}
-                            <img src=" {{ asset($category->category_image) }} " alt="" height="40" width="40">
+                            <img src=" {{ asset($category->category_image) }} " alt="" height="50" width="50">
                             {{-- Adding Spaces --}} &nbsp;
                             {{ $category->category_name_en }}
                         </a>

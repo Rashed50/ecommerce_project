@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Session;
 class CompanyProfileController extends Controller
 {
     public function index(){
-        $profileData = CompanyProfile::latest()->get();
+        $profileData = CompanyProfile::latest()->first();
+        // dd($profileData);
+
         return view('admin.company-profile.index', compact('profileData'));
     }
 
@@ -71,7 +73,7 @@ class CompanyProfileController extends Controller
             $companyProfileData->twitter_url = $request->twitter_url;
             $companyProfileData->whatsapp_num = $request->whatsapp_num;
             $companyProfileData->comp_profile_img = $save_url;
-            return $companyProfileData->save();
+            $companyProfileData->save();
 
             if($companyProfileData == 1){
                 // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
