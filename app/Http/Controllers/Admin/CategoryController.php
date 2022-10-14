@@ -47,16 +47,6 @@ class CategoryController extends Controller
 
             $categoryAdd = (new ProductInfoDataService())->CategoryDataInsert($request->category_name_en, $request->category_name_bn, $save_url);
 
-        // $categoryAdd = Category::insert([
-        //     'category_name_en' => $request->category_name_en,
-        //     'category_name_bn' => $request->category_name_bn,
-        //     'category_slug_en' => strtolower(str_replace(' ','-', $request->category_name_en)),
-        //     'category_slug_bn' => strtolower(str_replace(' ','-', $request->category_name_bn)),
-        //     'category_image' => $save_url,
-        //     'created_at' => Carbon::now(),
-        // ]);
-
-
         if($categoryAdd){
             // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
             return redirect()->back()->with('message','Information Added Successfully'); //Toastr alert
@@ -68,7 +58,8 @@ class CategoryController extends Controller
     }
 
     public function categoryDataEdit($id){
-        $category = Category::where('category_id', $id)->first();
+        $category = (new ProductInfoDataService())->CategoryInfoEdit($id);
+        // $category = Category::where('category_id', $id)->first();
         return view('admin.category.edit', compact('category'));
     }
 
@@ -85,6 +76,8 @@ class CategoryController extends Controller
         ]);
         // dd('After validation');
 
+
+
         $old_image = $request->old_image;
         $category_id = $request->category_id;
 
@@ -95,14 +88,7 @@ class CategoryController extends Controller
             Image::make($image)->resize(166,110)->save('uploads/categories/'.$name_gen);
             $save_url = 'uploads/categories/'.$name_gen;
 
-            $category = Category::where('category_id', $category_id)->update([
-                'category_name_en' => $request->category_name_en,
-                'category_name_bn' => $request->category_name_bn,
-                'category_slug_en' => strtolower(str_replace(' ','-', $request->category_name_en)),
-                'category_slug_bn' => strtolower(str_replace(' ','-', $request->category_name_bn)),
-                'category_image' => $save_url,
-                'updated_at' => Carbon::now(),
-            ]);
+            $category = (new ProductInfoDataService())->CtgDataUpdateIfHasImage($request->category_id, $request->category_name_en, $request->category_name_bn, $save_url);
 
             if($category){
                 // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
@@ -113,13 +99,7 @@ class CategoryController extends Controller
                 return redirect()->back();
             }
         } else {
-            $category = Category::where('category_id', $category_id)->update([
-                'category_name_en' => $request->category_name_en,
-                'category_name_bn' => $request->category_name_bn,
-                'category_slug_en' => strtolower(str_replace(' ','-', $request->category_name_en)),
-                'category_slug_bn' => strtolower(str_replace(' ','-', $request->category_name_bn)),
-                'updated_at' => Carbon::now(),
-            ]);
+            $category = (new ProductInfoDataService())->ctgUpdateifNoImage($request->category_name_en, $request->category_name_bn, $request->category_id,);
 
             if($category){
                 // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
@@ -133,8 +113,8 @@ class CategoryController extends Controller
     }
 
     public function categoryDataDelete($id){
-        // dd('This is from delete method');
-        $categoryData = Category::where('category_id', $id)->delete();
+        $categoryData = (new ProductInfoDataService())->CategoryDataDelete($id);
+
         if($categoryData){
             // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
             return redirect()->route('categories')->with('message','Category Data Deleted Successfully'); //Toastr alert

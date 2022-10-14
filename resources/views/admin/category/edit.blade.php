@@ -38,17 +38,6 @@ active show-sub
                 @csrf
                 <input type="hidden" name="old_image" value=" {{ $category->category_image }} ">
                 <input type="hidden" name="category_id" value=" {{ $category->category_id }} ">
-                <div class="row mg-t-20  form-group {{ $errors->has('category_image') ? ' has-error' : '' }}">
-                    <label class="col-sm-4 form-control-label">Category Image: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                        <input type="file" class="custom-file-input" name="category_image" value=" {{ $category->category_image }} ">
-                        <span class="custom-file-control custom-file-control-inverse">
-                            @error('category_image')
-                            <span class="text-danger"> {{ $message }} </span>
-                            @enderror
-                        </span>
-                    </div>
-                </div>
                 <div class="row mg-t-20 form-group {{ $errors->has('category_name_en') ? ' has-error' : '' }}">
                     <label class="col-sm-4 form-control-label">Category Name EN: <span class="tx-danger">*</span></label>
                     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
@@ -71,6 +60,18 @@ active show-sub
                         @enderror
                     </div>
                 </div>
+                <div class="row mg-t-20  form-group {{ $errors->has('category_image') ? ' has-error' : '' }}">
+                    <label class="col-sm-4 form-control-label">Category Image: <span class="tx-danger">*</span></label>
+                    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                        <input type="file" class="custom-file-input" name="category_image" value=" {{ $category->category_image }} " id="categoryImg">
+                        <span class="custom-file-control custom-file-control-inverse">
+                            @error('category_image')
+                            <span class="text-danger"> {{ $message }} </span>
+                            @enderror
+                        </span>
+                        <div class="row" id="preview_img"></div>
+                    </div>
+                </div>
                 <div class="form-layout-footer mg-t-30  form-group">
                     <button type="submit" class="btn btn-info mg-r-5">Update</button>
                 </div><!-- form-layout-footer -->
@@ -81,4 +82,38 @@ active show-sub
     </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br>
+@endsection
+@section('scripts')
+        {{-- ################## Selected Image preview ################### --}}
+   <script>
+       $(document).ready(function () {
+           $('#categoryImg').on('change', function () { //on file input change
+               if (window.File && window.FileReader && window.FileList && window
+                   .Blob) //check File API supported browser
+               {
+                   var data = $(this)[0].files; //this file data
+
+                   $.each(data, function (index, file) { //loop though each file
+                       if (/(\.|\/)(gif|jpe?g|png)$/i.test(file
+                           .type)) { //check supported file type
+                           var fRead = new FileReader(); //new filereader
+                           fRead.onload = (function (file) { //trigger function on successful read
+                               return function (e) {
+                                   var img = $('<img/>').addClass('thumb').attr('src',
+                                       e.target.result).width(80)
+                                       .height(80); //create image element
+                                   $('#preview_img').append(
+                                       img); //append image to output element
+                               };
+                           })(file);
+                           fRead.readAsDataURL(file); //URL representing the file's data.
+                       }
+                   });
+
+               } else {
+                   alert("Your browser doesn't support File API!"); //if File API is absent
+               }
+           });
+       });
+   </script>
 @endsection
