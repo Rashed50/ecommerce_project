@@ -71,6 +71,7 @@
     <!-- Company Mission and vission part -->
     <br><br><br><br>
     <!-- Counter Part Start -->
+
     <section id="counter" class="counter"  style="padding:0px 0px;">
         <div class="main_counter_area">
             <div class="overlay p-y-3">
@@ -79,14 +80,14 @@
                         <div class="main_counter_content text-center white-text wow fadeInUp">
                             <div class="col-md-2">
                                 <div class="single_counter p-y-2 m-t-1">
-                                    <h2 class="statistic-counter">26</h2>
-                                    <p>service availavle</p>
+                                    <h2 class="statistic-counter"> {{ $totalCategory }} </h2>
+                                    <p>Availavle Categories</p>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="single_counter p-y-2 m-t-1">
-                                    <h2 class="statistic-counter">718</h2>
-                                    <p>employees of company</p>
+                                    <h2 class="statistic-counter"> {{ $totalBrands }} </h2>
+                                    <p>Collection Of Brands</p>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -104,7 +105,7 @@
                             <div class="col-md-2">
                                 <div class="single_counter p-y-2 m-t-1">
                                     <h2 class="statistic-counter">209</h2>
-                                    <p>award win</p>
+                                    <p>Clients feedback</p>
                                 </div>
                             </div>
                         </div>

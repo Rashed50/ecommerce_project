@@ -109,7 +109,7 @@ Route::group(['prefix'=>'admin','middleware' => ['admin','auth'], 'namespace'=>'
     Route::get('product-delete/{id}', [ProductController::class, 'productDataDelete'])->name('product-data-delete');
     /*
      ==========================================================================
-     ============================= Product Part ============================
+     ============================= Banner Part ============================
      ==========================================================================
     */
     Route::get('banner', [BannerController::class, 'index'])->name('banners');

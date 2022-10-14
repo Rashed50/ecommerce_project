@@ -78,7 +78,8 @@
 
                     <div class="module-body">
                         <ul class='list-unstyled'>
-                            <li class="first"><a href="#" title="About us">Shopping Guide</a></li>
+                            {{-- <li class="first"><a href="#" title="About us">Shopping Guide</a></li> --}}
+                            <li class="first"><a href=" {{ route('frontend-privacy-policy') }} " target="_blank" title="About us">Privacy policy</a></li>
                             <li><a title="Information" href="#">Customer Service</a></li>
                         </ul>
                     </div><!-- /.module-body -->

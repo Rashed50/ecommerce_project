@@ -31,15 +31,14 @@
           <span class="menu-item-label">Create User</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
+      
       <a href=" {{ route('company-profile') }} " class="sl-menu-link @yield('company-profile')">
         <div class="sl-menu-item">
         {{-- <i class="fa fa-universal-access" aria-hidden="true"></i> --}}
         <i class="fa fa-empire tx-20"></i>
         <span class="menu-item-label">Company Profile</span>
         </div><!-- menu-item -->
-    </a><!-- sl-menu-link -->
-
-
+      </a><!-- sl-menu-link -->
 
       <a href="#" class="sl-menu-link @yield('banners')">
         <div class="sl-menu-item">

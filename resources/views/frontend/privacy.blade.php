@@ -68,7 +68,7 @@
                                 <p style="font-size: 16px;">Change to your information:</p>
                                 <p style="margin-top: 15px;">The information you provide us isn’t set in stone. You may review, update, correct or delete the personal information in your profile at any time. </p>
                                 <ul style="list-style-type: circle; ">
-                                    <li>If you would like us to remove your information from our records, please create a request at the <a href=" {{ route('frontend-contact') }} " style="text-decoration-line: underline;text-decoration-style: solid;">Contact Us</a> page. </li>
+                                    <li>If you would like us to remove your information from our records, please create a request at the <a href=" {{ route('frontend-contact') }} " style="text-decoration-line: underline;text-decoration-style: solid;" target="_black">Contact Us</a> page. </li>
                                     <li style="margin-top: 3px;">To Delete your Facebook login, visit the <a href=" {{ route('frontend-contact') }} " style="text-decoration-line: underline;text-decoration-style: solid;">Contact Us</a>  page while logged in via Facebook. You should see a "Delete Facebook Login" option to create a request to remove Facebook login from your account.</li>
                                 </ul>
                             </div>
