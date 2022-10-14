@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DataServices\ProductInfoDataService;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Carbon\Carbon;
@@ -21,7 +22,7 @@ class CategoryController extends Controller
 
 
     public function index(){
-        $categories = Category::latest()->get();
+        $categories = (new ProductInfoDataService())->CategoryInfoCollect();
         return view('admin.category.index', compact('categories'));
     }
 
@@ -44,14 +45,16 @@ class CategoryController extends Controller
             Image::make($image)->resize(166,110)->save('uploads/categories/'.$name_gen);
             $save_url = 'uploads/categories/'.$name_gen;
 
-        $categoryAdd = Category::insert([
-            'category_name_en' => $request->category_name_en,
-            'category_name_bn' => $request->category_name_bn,
-            'category_slug_en' => strtolower(str_replace(' ','-', $request->category_name_en)),
-            'category_slug_bn' => strtolower(str_replace(' ','-', $request->category_name_bn)),
-            'category_image' => $save_url,
-            'created_at' => Carbon::now(),
-        ]);
+            $categoryAdd = (new ProductInfoDataService())->CategoryDataInsert($request->category_name_en, $request->category_name_bn, $save_url);
+
+        // $categoryAdd = Category::insert([
+        //     'category_name_en' => $request->category_name_en,
+        //     'category_name_bn' => $request->category_name_bn,
+        //     'category_slug_en' => strtolower(str_replace(' ','-', $request->category_name_en)),
+        //     'category_slug_bn' => strtolower(str_replace(' ','-', $request->category_name_bn)),
+        //     'category_image' => $save_url,
+        //     'created_at' => Carbon::now(),
+        // ]);
 
 
         if($categoryAdd){
