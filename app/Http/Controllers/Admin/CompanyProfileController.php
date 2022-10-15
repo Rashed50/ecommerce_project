@@ -11,14 +11,16 @@ use Illuminate\Support\Facades\Session;
 
 class CompanyProfileController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $profileData = CompanyProfile::latest()->first();
         // dd($profileData);
 
         return view('admin.company-profile.index', compact('profileData'));
     }
 
-    public function companyProfileDataAdd(Request $request){
+    public function companyProfileDataAdd(Request $request)
+    {
         // dd($request->all());
 
         $this->validate($request, [
@@ -44,18 +46,18 @@ class CompanyProfileController extends Controller
             'comp_description' => 'required',
         ]);
         $image = $request->file('comp_profile_img');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(166,110)->save('uploads/profile/'.$name_gen);
-            $save_url = 'uploads/profile/'.$name_gen;
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(166, 110)->save('uploads/profile/' . $name_gen);
+        $save_url = 'uploads/profile/' . $name_gen;
 
-        $compamyProfile = CompanyProfile::where('comp_id',1)->first();
-        $companyProfileData = new CompanyProfile;
-
+        $compamyProfile = CompanyProfile::where('comp_id', 1)->first();
+        $companyProfileData = new CompanyProfile();
+        // dd($compamyProfile);
         if ($compamyProfile == null) {
             $companyProfileData->comp_name_en = $request->comp_name_en;
             $companyProfileData->comp_name_bn = $request->comp_name_bn;
-            $companyProfileData->comp_slug_en = strtolower(str_replace(' ','-', $request->comp_name_en));
-            $companyProfileData->comp_slug_bn = strtolower(str_replace(' ','-', $request->comp_name_bn));
+            $companyProfileData->comp_slug_en = strtolower(str_replace(' ', '-', $request->comp_name_en));
+            $companyProfileData->comp_slug_bn = strtolower(str_replace(' ', '-', $request->comp_name_bn));
             $companyProfileData->comp_address = $request->comp_address;
             $companyProfileData->comp_email1 = $request->comp_email1;
             $companyProfileData->comp_email2 = $request->comp_email2;
@@ -75,21 +77,20 @@ class CompanyProfileController extends Controller
             $companyProfileData->comp_profile_img = $save_url;
             $companyProfileData->save();
 
-            if($companyProfileData == 1){
+            if ($companyProfileData == 1) {
                 // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
-                return redirect()->back()->with('message','Information Added Successfully'); //Toastr alert
-            }else {
+                return redirect()->back()->with('message', 'Information Added Successfully'); //Toastr alert
+            } else {
                 // Session::flash('error', 'Somthing Went wrong! Please try again later');
                 Session::flash('error', 'Somthing Went wrong! Please try again later');
                 return redirect()->back();
             }
-
         } else {
             $compamyProfile =  CompanyProfile::where('comp_id', 1)->update([
                 'comp_name_en' => $request->comp_name_en,
                 'comp_name_bn' => $request->comp_name_bn,
-                'comp_slug_en' => strtolower(str_replace(' ','-', $request->comp_name_en)),
-                'comp_slug_bn' => strtolower(str_replace(' ','-', $request->comp_name_bn)),
+                'comp_slug_en' => strtolower(str_replace(' ', '-', $request->comp_name_en)),
+                'comp_slug_bn' => strtolower(str_replace(' ', '-', $request->comp_name_bn)),
                 'comp_address' => $request->comp_address,
                 'comp_email1' => $request->comp_email1,
                 'comp_email2' => $request->comp_email2,
@@ -109,19 +110,14 @@ class CompanyProfileController extends Controller
                 'updated_at' => Carbon::now(),
             ]);
 
-                if($compamyProfile){
-                    // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
-                    return redirect()->back()->with('message','Information Added Successfully'); //Toastr alert
-                }else {
-                    // Session::flash('error', 'Somthing Went wrong! Please try again later');
-                    Session::flash('error', 'Somthing Went wrong! Please try again later');
-                    return redirect()->back();
-                }
+            if ($compamyProfile) {
+                // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
+                return redirect()->back()->with('message', 'Information Added Successfully'); //Toastr alert
+            } else {
+                // Session::flash('error', 'Somthing Went wrong! Please try again later');
+                Session::flash('error', 'Somthing Went wrong! Please try again later');
+                return redirect()->back();
             }
         }
-
-
-
-
-
+    }
 }
