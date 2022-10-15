@@ -52,18 +52,15 @@ class BannerController extends Controller
         // dd('After Insertion ');
 
         if($banner){
-            // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
             return redirect()->back()->with('message','Information Added Successfully'); //Toastr alert
         }else {
-            // Session::flash('error', 'Somthing Went wrong! Please try again later');
             Session::flash('error', 'Somthing Went wrong! Please try again later');
             return redirect()->back();
         }
     }
 
     public function bannerDataEdit($id){
-        // dd('Calling for edit');
-
+        
         $bannerData = Banner::where('banner_id', $id)->first();
         return view('admin.banner.edit', compact('bannerData'));
     }
