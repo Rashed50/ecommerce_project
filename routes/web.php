@@ -30,6 +30,7 @@ Route::get('/clear-cache', function () {
 Route::get('/',[FrontendController::class, 'index'])->name('frontend');
 Route::get('/about', [FrontendController::class, 'about'])->name('frontend-about');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend-contact');
+Route::get('/privacy-info', [FrontendController::class, 'privacyInfo'])->name('frontend-privacy-policy');
 
 // Auth::routes();
 Auth::routes();
@@ -109,7 +110,7 @@ Route::group(['prefix'=>'admin','middleware' => ['admin','auth'], 'namespace'=>'
     Route::get('product-delete/{id}', [ProductController::class, 'productDataDelete'])->name('product-data-delete');
     /*
      ==========================================================================
-     ============================= Product Part ============================
+     ============================= Banner Part ============================
      ==========================================================================
     */
     Route::get('banner', [BannerController::class, 'index'])->name('banners');

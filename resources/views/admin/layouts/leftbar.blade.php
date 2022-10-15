@@ -3,7 +3,7 @@
 
     <label class="sidebar-label">Menu</label>
     <div class="sl-sideleft-menu">
-      <a href=" {{ route('frontend') }} " class="sl-menu-link ">
+      <a href=" {{ route('frontend') }} " class="sl-menu-link " target="_blank">
         <div class="sl-menu-item">
           <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
           <span class="menu-item-label">Visit Site</span>
@@ -26,12 +26,12 @@
           <span class="menu-item-label">Create User</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
-
+      
       <a href=" {{ route('company-profile') }} " class="sl-menu-link @yield('company-profile')">
         <div class="sl-menu-item">
-          {{-- <i class="fa fa-universal-access" aria-hidden="true"></i> --}}
-          <i class="fa fa-empire tx-20"></i>
-          <span class="menu-item-label">Company Profile</span>
+        {{-- <i class="fa fa-universal-access" aria-hidden="true"></i> --}}
+        <i class="fa fa-empire tx-20"></i>
+        <span class="menu-item-label">Company Profile</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
 

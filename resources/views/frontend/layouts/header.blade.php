@@ -1,7 +1,7 @@
 <header class="header-style-1">
 
     <!-- ============================================== TOP MENU ============================================== -->
-    <div class="top-bar animate-dropdown">
+    <div class="top-bar animate-dropdown ">
         <div class="container">
             <div class="row">
                 <!--Company Logo-->
@@ -12,11 +12,11 @@
                     @endphp
                     @foreach ($companyProfileData as $companyData)
                     <div class="logo" style="margin: 10px;">
-                        <a href="home.html">
+                        <a href=" {{ route('frontend') }} ">
 
                             {{-- <img src=" {{ asset('frontend') }}/assets/images/logo.png" alt="header-image"
                             height="70px" width="100px"> --}}
-                            <img src=" {{ asset($companyData->comp_profile_img) }} " alt="" height="80" width="100">
+                            <img src=" {{ asset($companyData->comp_profile_img) }} " alt="" height="80" width="100" style="border-radius:10px">
 
                         </a>
                     </div><!-- /.logo -->
