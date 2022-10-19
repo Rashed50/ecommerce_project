@@ -966,26 +966,31 @@
                     <div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
                         <div class="product-item-holder size-big single-product-gallery small-gallery">
 
+                            @php
+                                $multipleImg = array($singleProduct->product_image1, $singleProduct->product_image2, $singleProduct->product_image3);
+                            @endphp
                                 <div id="owl-single-product">
-                                    <div class="single-product-gallery-item" id="slide{{ $singleProduct->product_id }}">
-                                        <a data-lightbox="image-1" data-title="Gallery" href=" {{ asset($singleProduct->product_image1) }}">
-                                            <img class="img-responsive" alt="" src=" {{ asset($singleProduct->product_image1) }}"
-                                                data-echo=" {{ asset($singleProduct->product_image1) }}" />
-                                        </a>
-                                    </div><!-- /.single-product-gallery-item -->
+                                    @foreach ($multipleImg as $image)
+                                        <div class="single-product-gallery-item" id="slide{{ $singleProduct->product_id }}">
+                                            <a data-lightbox="image-1" data-title="Gallery" href=" {{ asset($singleProduct->product_image1) }}">
+                                                <img class="img-responsive" alt="" src=" {{ asset($image) }}"
+                                                    data-echo=" {{ asset($image) }}" />
+                                            </a>
+                                        </div><!-- /.single-product-gallery-item -->
+                                    @endforeach
                                 </div><!-- /.single-product-slider -->
 
                             <div class="single-product-gallery-thumbs gallery-thumbs">
 
                                 <div id="owl-single-product-thumbnails">
-
+                                    @foreach ($multipleImg as $image)
                                         <div class="item">
                                             <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide1">
-                                                <img class="img-responsive" width="85" alt="" src=" {{ asset('frontend') }}/assets/images/blank.gif "
-                                                    data-echo=" {{ asset($singleProduct->product_image1) }}" />
+                                                <img class="img-responsive" width="85" alt="" src=" {{ asset($image) }} "
+                                                    data-echo=" {{ asset($image) }}" />
                                             </a>
                                         </div>
-
+                                    @endforeach
                                 </div><!-- /#owl-single-product-thumbnails -->
 
                             </div><!-- /.gallery-thumbs -->

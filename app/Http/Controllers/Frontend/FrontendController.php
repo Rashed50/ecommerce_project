@@ -8,13 +8,15 @@ use App\Http\Controllers\DataServices\FrontendDataService;
 class FrontendController extends Controller
 {
     public function index(){
-        return view('frontend.index');
+        $categories = (new FrontendDataService())->CategoryInfoCollect();
+        $products = (new FrontendDataService())->ProductInfoCollect();
+        return view('frontend.index', compact('products', 'categories'));
     }
 
     public function about(){
         $totalCategory = (new FrontendDataService())->TotalNumberOfCategoryCollect();
         $totalBrands = (new FrontendDataService())->TotalNumberOfBrandCollect();
-        return view('frontend.about', compact('totalCategory', 'totalBrands'));
+        return view('frontend.about', compact('totalCategory', 'totalBrands', 'products'));
     }
 
     public function contact(){
