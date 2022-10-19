@@ -27,9 +27,10 @@ Route::get('/clear-cache', function () {
 
     // #################### Frontend  ####################
 Route::get('/',[FrontendController::class, 'index'])->name('frontend');
-Route::get('/about', [FrontendController::class, 'about'])->name('frontend-about');
-Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend-contact');
-Route::get('/privacy-info', [FrontendController::class, 'privacyInfo'])->name('frontend-privacy-policy');
+Route::get('about', [FrontendController::class, 'about'])->name('frontend-about');
+Route::get('contact', [FrontendController::class, 'contact'])->name('frontend-contact');
+Route::get('privacy-info', [FrontendController::class, 'privacyInfo'])->name('frontend-privacy-policy');
+Route::get('product-details/{id}', [FrontendController::class, 'ProductDetails'])->name('frontend-product-details');
 
 // Auth::routes();
 Auth::routes();

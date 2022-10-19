@@ -36,7 +36,7 @@ active
             <h6 class="card-body-title">Update Sub Category Information</h6>
             <form action=" {{ route('subcategory-data-update') }} " method="post">
                 @csrf
-                <input type="hidden" name="subcategory_id" value=" {{ $subcategories->subcategory_id }} ">
+                <input type="hidden" name="subcategory_id" value=" {{ $subcatgDataFind->subcategory_id }} ">
                 <div class="row mg-t-20 form-group">
                     {{-- Select option with search facility  --}}
                     <label class="col-sm-4 form-control-label">Select Category: <span class="tx-danger">*</span></label>
@@ -56,7 +56,7 @@ active
                     <label class="col-sm-4 form-control-label">Name EN: <span class="tx-danger">*</span></label>
                     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                         <input type="text" class="form-control" placeholder="Sub Category Name English"
-                            name="subcategory_name_en" value="{{ $subcategories->subcategory_name_en }}">
+                            name="subcategory_name_en" value="{{ $subcatgDataFind->subcategory_name_en }}">
 
                         @error('subcategory_name_en')
                         <span class="text-danger"> {{ $message }} </span>
@@ -67,7 +67,7 @@ active
                     <label class="col-sm-4 form-control-label">Name BN: <span class="tx-danger">*</span></label>
                     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                         <input type="text" class="form-control" placeholder="Sub Category Name Bangla"
-                            name="subcategory_name_bn" value="{{ $subcategories->subcategory_name_bn }}">
+                            name="subcategory_name_bn" value="{{ $subcatgDataFind->subcategory_name_bn }}">
 
                         @error('subcategory_name_bn')
                         <span class="text-danger"> {{ $message }} </span>

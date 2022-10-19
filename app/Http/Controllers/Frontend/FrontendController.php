@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
-use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Http\Controllers\DataServices\FrontendDataService;
 
 class FrontendController extends Controller
 {
@@ -14,9 +12,8 @@ class FrontendController extends Controller
     }
 
     public function about(){
-        $totalCategory = Category::count();
-        $totalBrands = Brand::count();
-        // dd($totalCategory);
+        $totalCategory = (new FrontendDataService())->TotalNumberOfCategoryCollect();
+        $totalBrands = (new FrontendDataService())->TotalNumberOfBrandCollect();
         return view('frontend.about', compact('totalCategory', 'totalBrands'));
     }
 
@@ -26,5 +23,11 @@ class FrontendController extends Controller
 
     public function privacyInfo(){
         return view('frontend.privacy');
+    }
+
+    public function ProductDetails($id){
+        $singleProduct = (new FrontendDataService())->SingleProductInfoCollect($id);
+        // dd($singleProduct);
+        return view('frontend.product-details', compact('singleProduct'));
     }
 }

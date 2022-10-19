@@ -4,9 +4,6 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DataServices\ProductInfoDataService;
-use App\Models\Category;
-use App\Models\Subcategory;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
@@ -15,10 +12,9 @@ class CategoryController extends Controller
 {
     // Category Wise SubCategory Data show
     public function categoryWiseSubcategory($id){
-        $data = Subcategory::select('subcategory_id', 'subcategory_name_en')->where('category_id',$id)->get();
+        $data = (new ProductInfoDataService())->CategoryWiseSubCatgInfoCollect($id);
         return json_encode($data);
     }
-
 
 
     public function index(){
@@ -59,7 +55,6 @@ class CategoryController extends Controller
 
     public function categoryDataEdit($id){
         $category = (new ProductInfoDataService())->CategoryInfoEdit($id);
-        // $category = Category::where('category_id', $id)->first();
         return view('admin.category.edit', compact('category'));
     }
 
@@ -79,7 +74,6 @@ class CategoryController extends Controller
 
 
         $old_image = $request->old_image;
-        $category_id = $request->category_id;
 
         if ($request->file('category_image')) {
             unlink($old_image);
@@ -128,8 +122,8 @@ class CategoryController extends Controller
     // ########################################  Sub Category Part  ########################################
 
     public function subCategoryIndex(){
-        $categories = Category::latest()->get();
-        $subcategories = Subcategory::latest()->get();
+        $categories = (new ProductInfoDataService())->CategoryInfoCollect();
+        $subcategories = (new ProductInfoDataService())->SubCategoryInfoColloct();
         return view('admin.subcategory.index', compact('subcategories','categories'));
     }
 
@@ -146,15 +140,7 @@ class CategoryController extends Controller
         ]);
         // dd('After validation');
 
-        $subcategoryAdd = Subcategory::insert([
-            'subcategory_name_en' => $request->subcategory_name_en,
-            'subcategory_name_bn' => $request->subcategory_name_bn,
-            'subcategory_slug_en' => strtolower(str_replace(' ','-', $request->subcategory_name_en)),
-            'subcategory_slug_bn' => strtolower(str_replace(' ','-', $request->subcategory_name_bn)),
-            'category_id' => $request->category_id,
-            'created_at' => Carbon::now(),
-        ]);
-
+        $subcategoryAdd = (new ProductInfoDataService())->SubCategoryDataInsert($request->subcategory_name_en, $request->subcategory_name_bn, $request->category_id);
 
         if($subcategoryAdd){
             // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
@@ -167,9 +153,9 @@ class CategoryController extends Controller
     }
 
     public function subcategoryDataEdit($id){
-        $categories = Category::latest()->get();
-        $subcategories = Subcategory::where('subcategory_id', $id)->first();
-        return view('admin.subcategory.edit', compact('subcategories', 'categories'));
+        $categories = (new ProductInfoDataService())->CategoryInfoCollect();
+        $subcatgDataFind = (new ProductInfoDataService())->SubCategInfoEdit($id);
+        return view('admin.subcategory.edit', compact('subcatgDataFind', 'categories'));
     }
 
     public function subcategoryDataUpdate(Request $request){
@@ -186,14 +172,8 @@ class CategoryController extends Controller
         // dd('After validation');
         $subcategory_id = $request->subcategory_id;
 
-        $update = Subcategory::where('subcategory_id', $subcategory_id)->update([
-            'subcategory_name_en' => $request->subcategory_name_en,
-            'subcategory_name_bn' => $request->subcategory_name_bn,
-            'subcategory_slug_en' => strtolower(str_replace(' ','-', $request->subcategory_name_en)),
-            'subcategory_slug_bn' => strtolower(str_replace(' ','-', $request->subcategory_name_bn)),
-            'category_id' => $request->category_id,
-            'updated_at' => Carbon::now(),
-        ]);
+        $update = (new ProductInfoDataService())->SubcatgDataUpdate($request->subcategory_id, $request->subcategory_name_en, $request->subcategory_name_bn, $request->category_id);
+
         if($update){
             // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
             return redirect()->route('subcategories')->with('message','Sub Category Information Updated Successfully'); //Toastr alert
@@ -205,9 +185,8 @@ class CategoryController extends Controller
     }
 
     public function subcategoryDataDelete($id){
-        // dd('This is from delete method');
-        $subcategoryData = Subcategory::where('subcategory_id', $id)->delete();
-        if($subcategoryData){
+        $subcategoryDataDelete = (new ProductInfoDataService())->SubCatgDataDelete($id);
+        if($subcategoryDataDelete){
             // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
             return redirect()->route('subcategories')->with('message','Sub Category Data Deleted Successfully'); //Toastr alert
         }else {
@@ -215,7 +194,6 @@ class CategoryController extends Controller
             Session::flash('error', 'Somthing Went wrong! Please try again later');
             return redirect()->back();
         }
-
     }
 
 

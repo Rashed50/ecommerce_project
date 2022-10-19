@@ -70,7 +70,7 @@ active show-sub
                 <form action=" {{ route('category-add') }} " method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row mg-t-20 form-group {{ $errors->has('category_name_en') ? ' has-error' : '' }}">
-                        <label class="col-sm-4 form-control-label">Name EN: <span class="tx-danger">*</span></label>
+                        <label class="col-sm-4 form-control-label">Name EN:<span class="tx-danger">*</span></label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                             <input type="text" class="form-control" placeholder="Category Name English"
                                 name="category_name_en" value="{{ old('category_name_en') }}">
@@ -81,7 +81,7 @@ active show-sub
                         </div>
                     </div><!-- row -->
                     <div class="row mg-t-20 form-group {{ $errors->has('category_name_bn') ? ' has-error' : '' }}">
-                        <label class="col-sm-4 form-control-label">Name BN: <span class="tx-danger">*</span></label>
+                        <label class="col-sm-4 form-control-label">Name BN:<span class="tx-danger">*</span></label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                             <input type="text" class="form-control" placeholder="Category Name Bangla"
                                 name="category_name_bn" value="{{ old('category_name_bn') }}">
@@ -92,7 +92,7 @@ active show-sub
                         </div>
                     </div><!-- row -->
                     <div class="row mg-t-20  form-group {{ $errors->has('category_image') ? ' has-error' : '' }}">
-                        <label class="col-sm-4 form-control-label">Category Image: <span class="tx-danger">*</span></label>
+                        <label class="col-sm-4 form-control-label">Category Image:<span class="tx-danger">*</span></label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                             <input type="file" class="custom-file-input" name="category_image" id="categoryImg">
                             <span class="custom-file-control custom-file-control-inverse"></span>

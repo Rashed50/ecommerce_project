@@ -7,7 +7,7 @@
 
 <nav class="breadcrumb sl-breadcrumb">
     <span class="breadcrumb-item active">Dashboard</span>
-    <a class="breadcrumb-item" href="index.html">Company Profile Update</a>
+    <a class="breadcrumb-item" href="#">Company Profile Update</a>
 </nav>
 <br><br>
 <div class="sl-pagebody">
@@ -15,7 +15,7 @@
     <div class="row row-sm">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-            <form class="form-horizontal company-form" id="registration" enctype="multipart/form-data" method="post" action=" {{ route('company-profile-add') }} ">
+            <form class="form-horizontal company-form" id="registration" action=" {{ route('company-profile-add') }} " enctype="multipart/form-data" method="POST">
               @csrf
               <div class="card">
                   <div class="card-header">
@@ -38,11 +38,11 @@
                         </div>
                         <div class="col-md-2"></div>
                     </div>
-
+                    <input type="hidden" name="old_image" value=" @if ($profileData != null) {{ $profileData->comp_profile_img}} @endif ">
                     <div class="form-group row custom_form_group{{ $errors->has('comp_name_en') ? ' has-error' : '' }}">
                         <label class="col-sm-3 control-label">Company Name English:<span class="tx-danger">*</span></label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control" name="comp_name_en" value=" @if ($profileData != null) {{ $profileData->comp_name_en}} @endif "  placeholder="Enter Company English Name" required>
+                          <input type="text" class="form-control" name="comp_name_en" value=" @if ($profileData != null) {{ $profileData->comp_name_en }} @endif "  placeholder="Enter Company English Name" required>
                           @if ($errors->has('comp_name_en'))
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $errors->first('comp_name_en') }}</strong>
@@ -53,7 +53,7 @@
                     <div class="form-group row custom_form_group{{ $errors->has('comp_name_bn') ? ' has-error' : '' }}">
                         <label class="col-sm-3 control-label">Company Name Bangla:<span class="tx-danger">*</span></label>
                         <div class="col-sm-7">
-                          <input type="text" placeholder="Enter Company Arabic Name"  class="form-control" name="comp_name_bn" value=" @if ($profileData != null) {{ $profileData->comp_name_bn}} @endif " required>
+                          <input type="text" placeholder="Enter Company Bangla Name"  class="form-control" name="comp_name_bn" value=" @if ($profileData != null) {{ $profileData->comp_name_bn}} @endif " required>
                           @if ($errors->has('comp_name_bn'))
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $errors->first('comp_name_bn') }}</strong>
@@ -61,9 +61,6 @@
                           @endif
                         </div>
                     </div>
-
-
-
                     <div class="form-group row custom_form_group{{ $errors->has('comp_email1') ? ' has-error' : '' }}">
                         <label class="col-sm-3 control-label">Email 1:<span class="tx-danger">*</span></label>
                         <div class="col-sm-7">
@@ -75,7 +72,6 @@
                           @endif
                         </div>
                     </div>
-
                     <div class="form-group row custom_form_group{{ $errors->has('comp_email2') ? ' has-error' : '' }}">
                         <label class="col-sm-3 control-label">Email 2:<span class="tx-danger">*</span></label>
                         <div class="col-sm-7">
@@ -138,17 +134,6 @@
                           @endif
                         </div>
                     </div>
-                    <div class="form-group row custom_form_group{{ $errors->has('comp_contact_address') ? ' has-error' : '' }}">
-                        <label class="col-sm-3 control-label">Contact Address:<span class="tx-danger">*</span></label>
-                        <div class="col-sm-7">
-                          <textarea placeholder="Enter Company Contact Address" name="comp_contact_address" class="form-control" required> @if ($profileData != null) {{ $profileData->comp_contact_address}} @endif </textarea>
-                          @if ($errors->has('comp_contact_address'))
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $errors->first('comp_contact_address') }}</strong>
-                              </span>
-                          @endif
-                        </div>
-                    </div>
                     <div class="form-group row custom_form_group{{ $errors->has('comp_profile_img') ? ' has-error' : '' }}">
                         <label class="col-sm-3 form-control-label">Company Profile Image: <span class="tx-danger">*</span></label>
                           <div class="col-sm-7">
@@ -161,8 +146,7 @@
                             @endif
                             <div class="row" id="preview_image"></div>
                           </div>
-                      </div>
-
+                    </div>
                     <div class="form-group row custom_form_group{{ $errors->has('facebook_url') ? ' has-error' : '' }}">
                           <label class="col-sm-3 control-label">Facebook Link:<span class="tx-danger">*</span></label>
                           <div class="col-sm-7">
