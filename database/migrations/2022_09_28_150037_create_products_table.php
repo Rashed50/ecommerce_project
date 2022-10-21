@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('product_image2')->nullable();
             $table->string('product_image3')->nullable();
             $table->string('product_insert_by');
-            $table->string('product_description')->nullable();
+            $table->text('product_description', 1000)->nullable();
             $table->boolean('product_status',['1','0'])->default('1');
             $table->timestamps();
         });

@@ -985,7 +985,7 @@
         <!-- ========================================= SECTION – Slider Part End  ========================================= -->
 
         <!-- ============================================== INFO BOXES ============================================== -->
-        <div class="info-boxes wow fadeInUp">
+        {{-- <div class="info-boxes wow fadeInUp">
             <div class="info-boxes-inner">
                 <div class="row">
                     <div class="col-md-6 col-sm-4 col-lg-4">
@@ -1026,7 +1026,7 @@
                 </div><!-- /.row -->
             </div><!-- /.info-boxes-inner -->
 
-        </div><!-- /.info-boxes -->
+        </div><!-- /.info-boxes --> --}}
         <!-- ============================================== INFO BOXES : END ============================================== -->
         <!-- ============================================== SCROLL TABS ============================================== -->
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
