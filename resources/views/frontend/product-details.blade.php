@@ -999,7 +999,7 @@
                     </div><!-- /.gallery-holder -->
                     <div class='col-sm-6 col-md-7 product-info-block'>
                         <div class="product-info">
-                            <h1 class="name"> {{ $singleProduct->product_name_en }} </h1>
+                            <h1 class="name" id="pName"> {{ $singleProduct->product_name_en }} </h1>
 
                             <div class="rating-reviews m-t-20">
                                 <div class="row">
@@ -1023,7 +1023,11 @@
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="stock-box">
-                                            <span class="value">In Stock</span>
+                                            @if ($singleProduct->product_quantity == null)
+                                                <span class="value">Out Of Stock</span>
+                                            @else
+                                            <span class="value" style="color: green">In Stock</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div><!-- /.row -->
@@ -1038,8 +1042,19 @@
 
                                     <div class="col-sm-6">
                                         <div class="price-box">
-                                            <span class="price">{{ $singleProduct->product_sale_price }}</span>
-                                            <span class="price-strike">{{ $singleProduct->product_actual_price }}</span>
+
+                                            @if ($singleProduct->product_sale_price == null)
+                                                <span class="price">
+                                                    {{$singleProduct->product_actual_price}}
+                                                </span>
+                                            @else
+                                            <span class="price">
+                                                {{ $singleProduct->product_sale_price }}
+                                            </span>
+                                            <span class="price-strike">
+                                                 {{ $singleProduct->product_actual_price }}
+                                            </span>
+                                            @endif
                                         </div>
                                     </div>
 
@@ -1060,9 +1075,36 @@
                                         </div>
                                     </div>
 
+                                </div><!-- /.row --> <br>
+                                <div class="row mt-10">
+                                    <div class="col-md-6">
+                                        @if ($singleProduct->product_color_en == null)
+
+                                        @else
+                                            <label for="product_color">Product Color:</label>
+                                            <select class="form-control" id="product_color">
+                                                <option value="" selected> Select One </option>
+                                                @foreach ($product_color_en as $color_en)
+                                                <option value="{{ $color_en }}"> {{ ucwords($color_en) }} </option>
+                                                @endforeach
+                                            </select>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-6">
+                                        @if ($singleProduct->product_size_en == null)
+
+                                        @else
+                                            <label for="product_size">Product Size:</label>
+                                            <select class="form-control" id="product_size">
+                                                <option value="" selected> Select One </option>
+                                                @foreach ($product_size_en as $size_en)
+                                                <option value="{{ $size_en }}"> {{ ucwords($size_en) }} </option>
+                                                @endforeach
+                                            </select>
+                                        @endif
+                                    </div>
                                 </div><!-- /.row -->
                             </div><!-- /.price-container -->
-
                             <div class="quantity-container info-container">
                                 <div class="row">
 
@@ -1079,16 +1121,18 @@
                                                     <div class="arrow minus gradient"><span class="ir"><i
                                                                 class="icon fa fa-sort-desc"></i></span></div>
                                                 </div>
-                                                <input type="text" value="1">
+                                                <input type="text" value="1" id="pQty">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-7">
-                                        <a href="#" class="btn btn-primary"><i
-                                                class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
-                                    </div>
+                                    <input type="hidden" name="product_id" id="product_id" value="{{$singleProduct->product_id}}">
 
+                                    <div class="col-sm-7">
+                                        <button type="submit" onclick=" addToCart() " class="btn btn-primary">
+                                            <i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART
+                                        </button>
+                                    </div>
 
                                 </div><!-- /.row -->
                             </div><!-- /.quantity-container -->
@@ -1146,8 +1190,6 @@
 
                                         </div><!-- /.reviews -->
                                     </div><!-- /.product-reviews -->
-
-
 
                                     <div class="product-add-review">
                                         <h4 class="title">Write your own review</h4>
@@ -1263,8 +1305,6 @@
                                             <div class="form-group">
                                                 <label for="exampleInputTag">Add Your Tags: </label>
                                                 <input type="email" id="exampleInputTag" class="form-control txt">
-
-
                                             </div>
 
                                             <button class="btn btn-upper btn-primary" type="submit">ADD TAGS</button>
@@ -1648,7 +1688,6 @@
         </div><!-- /.col -->
         <div class="clearfix"></div>
     </div><!-- /.row -->
-
 
     <br><br><br>
 </div><!-- /.row -->

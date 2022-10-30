@@ -130,6 +130,67 @@
     <script src=" {{ asset('frontend') }}/assets/js/wow.min.js"></script>
     <script src=" {{ asset('frontend') }}/assets/js/scripts.js"></script>
 
+     {{-- Modal Ajax request Start --}}
+     <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
+        // Start Product Buying info (To Cart)
+        function addToCart(id) {
+            var id = $('#product_id').val();
+            var name = $('#pName').text();
+            var color = $('#product_color option:selected').text();
+            var size = $('#product_size option:selected').text();
+            var qty = $('#pQty').val();
+
+            // console.log(name)
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: "/cart/data/store/" + id,
+                data: {
+                    prod_name: name,
+                    color: color,
+                    size: size,
+                    quantity: qty,
+                },
+                success: function (data) {
+                    miniCartInfo();
+                    // alert(id)
+                    // console.log(data)
+
+                    //  start message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'message',
+                            title: data.success
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
+                    //  end message
+                }
+
+            })
+        }
+        // End Product Buying info (To Cart)
+
+
+    </script>
+    {{-- Modal Ajax request End --}}
+
 
 
 </body>

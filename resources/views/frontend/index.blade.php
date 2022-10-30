@@ -1084,8 +1084,7 @@
                                                             title="Add Cart">
                                                             <i class="fa fa-shopping-cart"></i>
                                                         </button>
-                                                        <button class="btn btn-primary cart-btn"
-                                                            type="button">Add to cart</button>
+                                                        <button class="btn btn-primary cart-btn" onchange="addToCart()" type="button">Add to cart</button>
                                                     </li>
 
                                                     <li class="lnk wishlist">
@@ -2380,4 +2379,11 @@
 </div><!-- /.row -->
 @include('frontend.layouts.footer-slider')
 
+@endsection
+@section('script')
+    <script>
+        function addToCart(){
+            Cart::add('293ad', 'Product 1', 1, 9.99, 550, ['size' => 'large']);
+        }
+    </script>
 @endsection

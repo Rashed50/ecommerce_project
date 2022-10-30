@@ -28,30 +28,39 @@ class ProductController extends Controller
             'brand_id' => 'required',
             'product_name_en' => 'required',
             'product_name_bn' => 'required',
+            'product_size_en' => 'required',
+            'product_size_bn' => 'required',
+            'product_color_en' => 'required',
+            'product_color_bn' => 'required',
             'product_actual_price' => 'required',
             'product_sale_price' => 'required',
             'product_quantity' => 'required',
             'product_image1' => 'required',
-            'product_insert_by' => 'required',
             'product_desc' => 'required',
         ], [
             'category_id.required' => 'Please enter category id here....',
             'subcategory_id.required' => 'Please enter sub category id here....',
             'brand_id.required' => 'Please enter brand id here....',
             'product_name_en.required' => 'Please enter product name in english here....',
+            'product_size_en.required' => 'Please enter product name in bangla here....',
+            'product_size_bn.required' => 'Please enter product name in bangla here....',
+            'product_color_en.required' => 'Please enter product color in bangla here....',
+            'product_color_bn.required' => 'Please enter product color in bangla here....',
             'product_name_bn.required' => 'Please enter product name in bangla here....',
             'product_actual_price.required' => 'Please enter product actual price here....',
             'product_sale_price.required' => 'Please enter product sale price here....',
             'product_quantity.required' => 'Please enter product quantity here....',
             'product_image1.required' => 'Please insert product image here....',
-            'product_insert_by.required' => 'Please fill who insert this product....',
             'product_desc.required' => 'Please enter product description here....',
         ]);
         // dd('After validation');
 
-        $productInsert = (new ProductTypeDataService())->ProductDataInsert( $request->category_id, $request->subcategory_id, $request->brand_id, $request->product_name_en,
-            $request->product_name_bn, $request->product_actual_price, $request->product_sale_price, $request->product_quantity, $request->product_insert_by, $request->product_desc,
-            $request->product_image1, $request->product_image2, $request->product_image3 );
+        $productInsert = (new ProductTypeDataService())->ProductDataInsert(
+            $request->category_id, $request->subcategory_id, $request->brand_id, $request->product_name_en,
+            $request->product_name_bn, $request->product_actual_price, $request->product_sale_price,
+            $request->product_quantity, $request->product_desc,
+            $request->product_image1, $request->product_image2, $request->product_image3,
+            $request->product_size_en, $request->product_size_bn, $request->product_color_en, $request->product_color_bn);
 
         // dd('After Insertion');
 
@@ -81,11 +90,14 @@ class ProductController extends Controller
             'brand_id' => 'required',
             'product_name_en' => 'required',
             'product_name_bn' => 'required',
+            'product_size_en' => 'required',
+            'product_size_bn' => 'required',
+            'product_color_en' => 'required',
+            'product_color_bn' => 'required',
             'product_actual_price' => 'required',
             'product_sale_price' => 'required',
             'product_quantity' => 'required',
             'product_image1' => 'required',
-            'product_insert_by' => 'required',
             'product_desc' => 'required',
         ], [
             'category_id.required' => 'Please enter category id here....',
@@ -93,11 +105,14 @@ class ProductController extends Controller
             'brand_id.required' => 'Please enter brand id here....',
             'product_name_en.required' => 'Please enter product name in english here....',
             'product_name_bn.required' => 'Please enter product name in bangla here....',
+            'product_size_en.required' => 'Please enter product name in bangla here....',
+            'product_size_bn.required' => 'Please enter product name in bangla here....',
+            'product_color_en.required' => 'Please enter product color in bangla here....',
+            'product_color_bn.required' => 'Please enter product color in bangla here....',
             'product_actual_price.required' => 'Please enter product actual price here....',
             'product_sale_price.required' => 'Please enter product sale price here....',
             'product_quantity.required' => 'Please enter product quantity here....',
             'product_image1.required' => 'Please enter image here....',
-            'product_insert_by.required' => 'Please fill who insert this product....',
             'product_desc.required' => 'Please enter product description here....',
         ]);
         // dd('After validation');
@@ -106,8 +121,9 @@ class ProductController extends Controller
             $request->product_id, $request->old_product_image1, $request->old_product_image2,
             $request->old_product_image3, $request->category_id, $request->subcategory_id,
             $request->brand_id, $request->product_name_en, $request->product_name_bn, $request->product_actual_price,
-            $request->product_sale_price, $request->product_quantity, $request->product_insert_by,
-            $request->product_desc, $request->product_image1, $request->product_image2, $request->product_image3);
+            $request->product_sale_price, $request->product_quantity, $request->product_desc, $request->product_image1,
+            $request->product_image2, $request->product_image3, $request->product_size_en, $request->product_size_bn,
+            $request->product_color_en, $request->product_color_bn);
 
 
         if($productUpdate){

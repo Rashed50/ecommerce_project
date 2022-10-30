@@ -23,6 +23,11 @@ class FrontendDataService {
         return Product::orderBy('product_name_en', 'ASC')->get();
     }
 
+    // Single Product Details Start
+    public function SingleProductDetails($product_id){
+        return Product::where('product_status', 1)->where('product_id', $product_id)->first();
+    }
+    
     public function SingleProductInfoCollect($productId){
         return Product::where('product_id', $productId)->first();
     }

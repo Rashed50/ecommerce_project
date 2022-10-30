@@ -8,6 +8,7 @@ use App\Models\CompanyProfile;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
@@ -129,8 +130,9 @@ class ProductTypeDataService {
     public function ProductDataInsert(
         $category_id, $subcategory_id, $brand_id,
         $product_name_en, $product_name_bn, $product_actual_price, $product_sale_price,
-        $product_quantity, $product_insert_by, $product_desc,
-        $product_image1, $product_image2, $product_image3){
+        $product_quantity, $product_desc,
+        $product_image1, $product_image2, $product_image3, $product_size_en, $product_size_bn,
+        $product_color_en, $product_color_bn){
 
             // dd($product_image3);
 
@@ -168,8 +170,12 @@ class ProductTypeDataService {
             'product_actual_price' => $product_actual_price,
             'product_sale_price' => $product_sale_price,
             'product_quantity' => $product_quantity,
-            'product_insert_by' => $product_insert_by,
+            'product_insert_by' => Auth::user()->name,
+            'product_size_en' => $product_size_en,
+            'product_size_bn' => $product_size_bn,
             'product_description' => $product_desc,
+            'product_color_en' => $product_color_en,
+            'product_color_bn' => $product_color_bn,
             'product_image1' => $save_url1,
             'product_image2' => $save_url2,
             'product_image3' => $save_url3,
@@ -185,7 +191,7 @@ class ProductTypeDataService {
     public function productDataUpdate(
         $product_id, $old_pro_img1, $old_pro_img2, $old_pro_img3, $catg_id, $subCatg_id, $brand_id,
         $product_name_en, $product_name_bn, $product_actual_price, $product_sale_price, $product_quantity,
-        $product_insert_by, $product_desc, $product_image1, $product_image2, $product_image3){
+        $product_desc, $product_image1, $product_image2, $product_image3, $product_size_en, $product_size_bn,$product_color_en, $product_color_bn){
 
 
         $productID = $product_id;
@@ -240,7 +246,11 @@ class ProductTypeDataService {
                 'product_actual_price' => $product_actual_price,
                 'product_sale_price' => $product_sale_price,
                 'product_quantity' => $product_quantity,
-                'product_insert_by' => $product_insert_by,
+                'product_size_en' => $product_size_en,
+                'product_size_bn' => $product_size_bn,
+                'product_color_en' => $product_color_en,
+                'product_color_bn' => $product_color_bn,
+                'product_insert_by' => Auth::user()->name,
                 'product_description' =>$product_desc,
                 'product_image1' => $save_url1,
                 'updated_at' => Carbon::now(),
@@ -258,7 +268,9 @@ class ProductTypeDataService {
                 'product_actual_price' => $product_actual_price,
                 'product_sale_price' => $product_sale_price,
                 'product_quantity' => $product_quantity,
-                'product_insert_by' => $product_insert_by,
+                'product_size_en' => $product_size_en,
+                'product_size_bn' => $product_size_bn,
+                'product_insert_by' => Auth::user()->name,
                 'product_description' =>$product_desc,
                 'updated_at' => Carbon::now(),
             ]);

@@ -32,6 +32,9 @@ Route::get('contact', [FrontendController::class, 'contact'])->name('frontend-co
 Route::get('privacy-info', [FrontendController::class, 'privacyInfo'])->name('frontend-privacy-policy');
 Route::get('product-details/{id}', [FrontendController::class, 'ProductDetails'])->name('frontend-product-details');
 
+// #################### Ajax Request for Cart Data Store  ####################
+Route::get('cart/data/store/{productId}', [CartController::class, 'cartDataStore']);
+
 // Auth::routes();
 Auth::routes();
 

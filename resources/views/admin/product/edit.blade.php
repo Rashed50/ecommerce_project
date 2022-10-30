@@ -161,15 +161,50 @@ active
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mg-t-20 form-group">
-                            {{-- Select option with search facility --}}
-                            <label class="col-sm-4 form-control-label">Product Insert By: <span
+                        <div class="row mg-t-10 form-group">
+                            <label class="col-sm-4 form-control-label">Product Size EN: <span
                                     class="tx-danger">*</span></label>
                             <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                <input type="text" class="form-control" placeholder="Enter Product Quantity"
-                                    name="product_insert_by" value="{{ $productData->product_insert_by }}">
+                                <input type="text" class="form-control" placeholder="Enter Product Size In English"
+                                    name="product_size_en" value="{{ $productData->product_size_en }}">
 
-                                @error('product_insert_by')
+                                @error('product_size_en')
+                                <span class="text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                        </div><!-- row -->
+                        <div class="row mg-t-10 form-group">
+                            <label class="col-sm-4 form-control-label">Product Size BN: <span
+                                    class="tx-danger">*</span></label>
+                            <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                                <input type="text" class="form-control" placeholder="Enter Product Size Bangla"
+                                    name="product_size_bn" value="{{ $productData->product_size_bn }}">
+
+                                @error('product_size_bn')
+                                <span class="text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                        </div><!-- row -->
+                        <div class="row mg-t-10 form-group">
+                            <label class="col-sm-4 form-control-label">Product Color EN: <span
+                                    class="tx-danger">*</span></label>
+                            <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                                <input type="text" class="form-control" placeholder="Enter Product Color In English"
+                                    name="product_color_en" value="{{ $productData->product_color_en }}">
+
+                                @error('product_color_en')
+                                <span class="text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                        </div><!-- row -->
+                        <div class="row mg-t-10 form-group">
+                            <label class="col-sm-4 form-control-label">Product Color BN: <span
+                                    class="tx-danger">*</span></label>
+                            <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                                <input type="text" class="form-control" placeholder="Enter Product Color In Bangla"
+                                    name="product_color_bn" value="{{ $productData->product_color_bn }}">
+
+                                @error('product_color_bn')
                                 <span class="text-danger"> {{ $message }} </span>
                                 @enderror
                             </div>

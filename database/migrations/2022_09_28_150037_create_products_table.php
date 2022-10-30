@@ -22,15 +22,19 @@ return new class extends Migration
             $table->string('product_name_bn');
             $table->string('product_slug_en');
             $table->string('product_slug_bn');
+            $table->string('product_size_en')->nullable();
+            $table->string('product_size_bn')->nullable();
+            $table->string('product_color_en')->nullable();
+            $table->string('product_color_bn')->nullable();
             $table->double('product_actual_price');
             $table->double('product_sale_price');
             $table->double('product_quantity');
-            $table->string('product_image1');
-            $table->string('product_image2')->nullable();
-            $table->string('product_image3')->nullable();
             $table->string('product_insert_by');
             $table->text('product_description', 1000)->nullable();
             $table->boolean('product_status',['1','0'])->default('1');
+            $table->string('product_image1');
+            $table->string('product_image2')->nullable();
+            $table->string('product_image3')->nullable();
             $table->timestamps();
         });
     }
