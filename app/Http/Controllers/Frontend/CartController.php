@@ -12,12 +12,12 @@ class CartController extends Controller
     public function cartDataStore(Request $request, $prdId){
         $produtDetails = (new FrontendDataService())->SingleProductDetails($prdId);
 
-        if ($produtDetails->discount_price == null) {
+        if ($produtDetails->product_sale_price == null) {
             Cart::add([
                 'id' => $prdId,
                 'name' => $request->prod_name,
                 'qty' => $request->quantity,
-                'price' => $produtDetails->actual_price,
+                'price' => $produtDetails->product_actual_price,
                 'weight' => 1,
                 'options' => [
                     'color' => $request->color,
@@ -31,7 +31,7 @@ class CartController extends Controller
                 'id' => $prdId,
                 'name' => $request->prod_name,
                 'qty' => $request->quantity,
-                'price' => $produtDetails->discount_price,
+                'price' => $produtDetails->product_sale_price,
                 'weight' => 1,
                 'options' => [
                     'color' => $request->color,
@@ -43,5 +43,24 @@ class CartController extends Controller
 
         }
     }
+
+    public function productBuyInfoOnMiniCart(){
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json(array(
+            'carts' => $carts,
+            'cartQuantity' => $cartQty,
+            'cartTotalPrice' => $cartTotal,
+            // 'cartTotalPrice' => round($cartTotal),
+        ));
+    }
+
+    public function productRemoveFromMiniCart($rowId){
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Successfully Removed From Cart']);
+    }
+
 }
 

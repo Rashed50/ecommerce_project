@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Artisan;
@@ -33,7 +34,12 @@ Route::get('privacy-info', [FrontendController::class, 'privacyInfo'])->name('fr
 Route::get('product-details/{id}', [FrontendController::class, 'ProductDetails'])->name('frontend-product-details');
 
 // #################### Ajax Request for Cart Data Store  ####################
-Route::get('cart/data/store/{productId}', [CartController::class, 'cartDataStore']);
+Route::get('/cart/data/store/{productId}', [CartController::class, 'cartDataStore']);
+// #################### Ajax Request for Product details show (On Mini Cart) ####################
+Route::get('/product/mini-cart/info', [CartController::class, 'productBuyInfoOnMiniCart']);
+// #################### Ajax Request for Product Remove (From Mini Cart) ####################
+Route::get('/miniCart/product-remove/{rowId}', [CartController::class, 'productRemoveFromMiniCart']);
+
 
 // Auth::routes();
 Auth::routes();
