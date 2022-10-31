@@ -3,7 +3,7 @@
 
     <!-- ============================================== TOP MENU ============================================== -->
    <!-- /.header-top Start -->
-    {{-- <div class="top-bar animate-dropdown">
+    <div class="top-bar animate-dropdown">
         <div class="container">
             <div class="header-top-inner">
                 <div class="cnt-account">
@@ -12,18 +12,19 @@
                                 Wishlist
                             </a>
                         </li>
-                        <li><a href="#"><i class="icon fa fa-shopping-cart"></i>
+                        {{-- <li>
+                            <a href="#"><i class="icon fa fa-shopping-cart"></i>
                                 My Cart
                             </a>
-                        </li>
+                        </li> --}}
                          <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
                         <li>
                             @auth
-                            <a href="{{ route('user-dashboard') }}"><i class="fa fa-tachometer"></i>
-                                Dashboard
-                            </a>
+                                <a href="{{ route('user-dashboard') }}"><i class="fa fa-tachometer"></i>
+                                    Dashboard
+                                </a>
                             @else
-                            <a href="#"><i class="icon fa fa-user"></i>My Profile</a>
+                                {{-- <a href="#"><i class="icon fa fa-user"></i>My Profile</a> --}}
                             @endauth
                         </li>
                         <li>
@@ -45,7 +46,7 @@
                     </ul>
                 </div>
 
-                <div class="cnt-block">
+                {{-- <div class="cnt-block">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small">
                             <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
@@ -72,11 +73,12 @@
                             </ul>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
+
                 <div class="clearfix"></div>
             </div>
         </div>
-    </div> --}}
+    </div>
    <!-- /.header-top End -->
     <!-- ============================================== TOP MENU : END ============================================== -->
     <div class="main-header">
