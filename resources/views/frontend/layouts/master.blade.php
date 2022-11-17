@@ -135,7 +135,7 @@
     <script src=" {{ asset('backend') }}/lib/sweetalert/sweetalert2.all.min.js "></script>
 
      {{-- Modal Ajax request Start --}}
-     <script type="text/javascript">
+    <script type="text/javascript">
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -266,6 +266,144 @@
         }
         // Product Remove From Mini Cart End
 
+       // Start Product Info Show On Cart Page
+       function cartPageProduct() {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/cart-products/view') }}",
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    var cartItem = "";
+                    $.each(response.carts, function (key, value) {
+                        cartItem += `
+                                    <tr>
+                                        <td class="col-md-2"><img src="/${value.options.image}" alt="img" style="width:100px; height:120px;"></td>
+
+                                        <td class="col-md-3">
+                                            <div class="product-name">
+                                                <input type="hidden" name="productName" value="${value.name}"> ${value.name}
+                                                </div>
+                                            <div class="price" >
+                                                <input type="hidden" name="productName" value="$${value.price}">
+                                            </div>
+                                        </td>
+
+                                        <td class="col-md-1">
+                                            ${ value.options.color == null
+                                                ? `<span>....</span>`
+                                                : `<strong>${value.options.color}</strong>`
+                                            }
+                                        </td>
+
+                                        <td class="col-md-1">
+                                            ${ value.options.size == null
+                                                ? `<span>....</span>`
+                                                : `<strong>${value.options.size}</strong>`
+                                            }
+                                        </td>
+
+                                        <td class="col-md-2">
+                                            <div class="price" style="font-weight:bold" >
+                                                ${value.price}*${value.qty}=${value.subtotal}
+                                            </div>
+                                        </td>
+
+                                        <td class="col-md-2">
+                                            ${value.qty > 1
+                                            ? `<button type="submit" id="${value.rowId}" onclick="CartDecrement(this.id)" class="btn btn-danger btn-sm">-</button>`
+                                            : `<button type="submit" class="btn btn-danger btn-sm" disabled >-</button>`
+                                            }
+                                            <input type="hidden" name="productQty" id="" value="${value.qty}" min="1" max="100" disabled style="width:30px; height:40px;">
+                                            <input type="text" name="productQty" id="" value="${value.qty}" min="1" max="100" disabled style="width:30px; height:40px;">
+                                            <button type="submit" id="${value.rowId}" onclick="CartIncrement(this.id)" class="btn btn-success btn-sm">+</button>
+
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <input type="hidden" id="productId" name="productId" value="${value.id}">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `
+                    });
+                    // console.log(cartItem);
+                    $('#cartProduct').html(cartItem);
+                },
+            });
+        }
+        cartPageProduct();
+        // End Product Info Show On Cart Page
+
+
+        // Product Remove From Mini Cart Start
+        function CartProductRemove(rowId) {
+            // alert(rowId);
+            $.ajax({
+                type: 'GET',
+                url: '/cart/product-remove/' + rowId,
+                dataType: 'json',
+                success: function (data) {
+                    // console.log(data)
+                    miniCartInfo();
+                    cartPageProduct();
+                    //  start message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'message',
+                            title: data.success
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
+                    //  end message
+                }
+            });
+        }
+        // Product Remove From Mini Cart End
+
+         // Start Product Increment On Cart Page
+         function CartIncrement(rowId) {
+            // alert(rowId);
+            $.ajax({
+                type: 'GET',
+                url: '/cart/product-increment/' + rowId,
+                dataType: 'json',
+                success: function (data) {
+                    // console.log(data)
+                    cartPageProduct();
+                    miniCartInfo();
+                }
+
+            });
+        }
+         // End Product Increment On Cart Page
+
+         // Start Product Decrement On Cart Page
+         function CartDecrement(rowId) {
+            // alert(rowId);
+            $.ajax({
+                type: 'GET',
+                url: '/cart/product-decrement/' + rowId,
+                dataType: 'json',
+                success: function (data) {
+                    // console.log(data)
+                    cartPageProduct();
+                    miniCartInfo();
+                }
+
+            });
+        }
+         // End Product Decrement On Cart Page
 
     </script>
     {{-- Modal Ajax request End --}}

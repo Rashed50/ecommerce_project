@@ -40,6 +40,20 @@ Route::get('/product/mini-cart/info', [CartController::class, 'productBuyInfoOnM
 // #################### Ajax Request for Product Remove (From Mini Cart) ####################
 Route::get('/miniCart/product-remove/{rowId}', [CartController::class, 'productRemoveFromMiniCart']);
 
+// #################### Go for Cart Page  ####################
+Route::get('cart', [CartController::class, 'cartItemView'])->name('cart-item-view');
+// #################### Products show at Cart page  ####################
+Route::get('/cart-products/view', [CartController::class, 'cartProducts']);
+// #################### Ajax Request for Product Remove (From Cart Page) ####################
+Route::get('/cart/product-remove/{rowId}', [CartController::class, 'cartProductRemoveFromCartPage']);
+// #################### Ajax Request for Product Increment (From Cart Page) ####################
+Route::get('/cart/product-increment/{rowId}', [CartController::class, 'cartProductIncrementFromCartPage']);
+// #################### Ajax Request for Product Decrement (From Cart Page) ####################
+Route::get('/cart/product-decrement/{rowId}', [CartController::class, 'cartProductDecrementFromCartPage']);
+
+// #################### Checkout Page (From Cart Page) ####################
+Route::get('/checkout-page', [CartController::class, 'checkoutPageForSelectedCartProducts'])->name('checkouts');
+Route::post('/checkout-process', [CartController::class, 'checkoutProcessRequest'])->name('checkout-request');
 
 // Auth::routes();
 Auth::routes();

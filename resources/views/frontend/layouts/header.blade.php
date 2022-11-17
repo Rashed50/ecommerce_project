@@ -12,11 +12,10 @@
                                 Wishlist
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="#"><i class="icon fa fa-shopping-cart"></i>
-                                My Cart
+                        <li><a href=" {{route('cart-item-view')}} "><i class="icon fa fa-shopping-cart"></i>
+                                @if (Session()->get('language') == 'bangla') আমার বাঁজার @else My Cart @endif
                             </a>
-                        </li> --}}
+                        </li>
                          <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
                         <li>
                             @auth
