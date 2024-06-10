@@ -50,7 +50,8 @@
 <body>
 
     <!-- ########## START: LEFT PANEL ########## -->
-    <div class="sl-logo"><a href=" {{ route('frontend') }} "><i class="icon ion-android-star-outline"></i> Easy Shopping
+    <div class="sl-logo"><a href=" {{ route('frontend') }} "></i>
+     Zeal Hair Fashion
         </a></div>
     @include('admin.layouts.leftbar')
     <!-- ########## END: LEFT PANEL ########## -->

@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\Session;
 
 class CompanyProfileController extends Controller
 {
-    public function index(){
+     public function index(){
         $profileData = (new ProductTypeDataService())->CompnyProfileInfoCollect();
+ 
         // dd($profileData);
         return view('admin.company-profile.index', compact('profileData'));
     }
 
-    public function companyProfileDataAdd(Request $request){
-        // dd($request->all());
-
+    public function companyProfileDataAdd(Request $request)
+    {
+         
         $companyDataInsert = (new ProductTypeDataService())->ProfileDataInsert(
             $request->comp_name_en, $request->comp_name_bn, $request->comp_email1,
             $request->comp_email2, $request->comp_phone1, $request->comp_phone2,
@@ -35,12 +36,7 @@ class CompanyProfileController extends Controller
             // Session::flash('error', 'Somthing Went wrong! Please try again later');
             Session::flash('error', 'Somthing Went wrong! Please try again later');
             return redirect()->back();
-        }
-
-        }
-
-
-
-
-
+        } 
+       
+    }
 }

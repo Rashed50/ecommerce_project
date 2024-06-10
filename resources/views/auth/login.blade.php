@@ -16,6 +16,8 @@
         <div class="container">
             <div class="sign-in-page">
                 <div class="row">
+                <div class="col-md-3 col-sm-3 sign-in"></div>
+
                     <!-- Sign-in -->
                     <div class="col-md-6 col-sm-6 sign-in">
                         <h4 class="">Sign in</h4>
@@ -53,7 +55,7 @@
 
 
                                 @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="forgot-password pull-right">Forgot your Password?</a>
+                                <!-- <a href="{{ route('password.request') }}" class="forgot-password pull-right">Forgot your Password?</a> -->
                                 @endif
                             </div>
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{ __('Login') }}</button>
@@ -61,8 +63,12 @@
                     </div>
                     <!-- Sign-in -->
 
+                    <div class="col-md-3 col-sm-3 sign-in"></div>
+
                     <!-- create a new account -->
-                    <div class="col-md-6 col-sm-6 create-new-account">
+
+
+                    <!-- <div class="col-md-6 col-sm-6 create-new-account">
                         <h4 class="checkout-subtitle">Create a new account</h4>
                         <p class="text title-tag-line">Create your new account.</p>
                         <form class="register-form outer-top-xs" role="form" method="POST" action="{{ route('register') }}">
@@ -118,7 +124,9 @@
                             </div>
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button"> {{ __('Register') }}</button>
                         </form>
-                    </div>
+                    </div> -->
+
+
                     <!-- create a new account -->
                 </div><!-- /.row -->
             </div><!-- /.sigin-in-->

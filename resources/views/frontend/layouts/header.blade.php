@@ -84,6 +84,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+ 
                     <!-- ============================================================= LOGO ============================================================= -->
                     {{-- <div class="logo">
                         <a href=" {{ route('frontend') }} ">
@@ -102,13 +103,14 @@
                         <a href=" {{ route('frontend') }} ">
 
                             {{-- <img src=" {{ asset('frontend') }}/assets/images/logo.png" alt="header-image"
-                                height="70px" width="100px"> --}}
+                            height="70px" width="100px"> --}}
                             <img src=" {{ asset($companyData->comp_profile_img) }} " alt="" height="80" width="100" style="border-radius:10px">
 
                         </a>
                     </div><!-- /.logo -->
                     @endforeach
 
+<<<<<<< HEAD
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div><!-- /.logo-holder -->
 
@@ -195,6 +197,7 @@
                 </div><!-- /.top-cart-row -->
             </div><!-- /.row -->
 
+ 
         </div><!-- /.container -->
 
     </div><!-- /.main-header -->
@@ -204,8 +207,7 @@
         <div class="container">
             <div class="yamm navbar navbar-default" role="navigation">
                 <div class="navbar-header">
-                    <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse"
-                        class="navbar-toggle collapsed" type="button">
+                    <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -227,6 +229,7 @@
                                     <a href="#" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
                                             {{ $category->category_name_en }}
                                     </a>
+
                                     <ul class="dropdown-menu container">
                                         <li>
                                             <div class="yamm-content ">
@@ -274,4 +277,6 @@
 
     </div><!-- /.header-nav -->
     <!-- ============================================== NAVBAR : END ============================================== -->
+ 
 </header>
+ 

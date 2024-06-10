@@ -13,17 +13,19 @@ class BrandController extends Controller
     // Subcategory Wise Brand Data
     public function subcategoryWiseBrandData($id){
         $data = (new ProductInfoDataService())->SubCatgWiseBrandDataCollect($id);
+
         return json_encode($data);
     }
-
 
     public function index(){
         $categories = (new ProductInfoDataService())->CategoryInfoCollect();
         $brands = (new ProductInfoDataService())->BrandInfoCollect();
+
         return view('admin.brand.index', compact('brands', 'categories'));
     }
 
-    public function brandDataAdd(Request $request){
+    public function brandDataAdd(Request $request)
+    {
         // dd($request->all());
 
         $this->validate($request, [
@@ -32,18 +34,18 @@ class BrandController extends Controller
             'brand_name_en' => 'required',
             'brand_name_bn' => 'required',
             'brand_image' => 'required',
-        ],[
+        ], [
             'category_id.required' => 'Please choose any of this Category name',
             'subcategory_id.required' => 'Please choose any of this Sub Category name',
             'brand_name_en.required' => 'Please input brand name in English',
             'brand_name_bn.required' => 'Please input brand name in Bangla',
             'brand_image.required' => 'Please input brand image',
         ]);
-            // dd('After validation');
-            $image = $request->file('brand_image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(166,110)->save('uploads/brands/'.$name_gen);
-            $save_url = 'uploads/brands/'.$name_gen;
+        // dd('After validation');
+        $image = $request->file('brand_image');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(166, 110)->save('uploads/brands/' . $name_gen);
+        $save_url = 'uploads/brands/' . $name_gen;
 
             $brandInsert = (new ProductInfoDataService())->BrandDataInsert($request->category_id, $request->subcategory_id, $request->brand_name_en, $request->brand_name_bn, $save_url);
             // dd('After Insertion ');
@@ -63,10 +65,12 @@ class BrandController extends Controller
         $brandData = (new ProductInfoDataService())->BrandInfoEdit($id);
         $categories = (new ProductInfoDataService())->CategoryInfoCollect();
         $subcategories = (new ProductInfoDataService())->SubCategoryInfoColloct();
+
         return view('admin.brand.edit', compact('brandData', 'categories', 'subcategories'));
     }
 
-    public function brandDataUpdate(Request $request){
+    public function brandDataUpdate(Request $request)
+    {
         // dd($request->all());
 
         $this->validate($request, [
@@ -75,6 +79,7 @@ class BrandController extends Controller
             'brand_name_en' => 'required',
             'brand_name_bn' => 'required',
         ],[
+
             'category_id.required' => 'Please any of this Category name',
             'subcategory_id.required' => 'Please any of this Sub Category name',
             'brand_name_en.required' => 'Please input brand name in English',
@@ -87,15 +92,16 @@ class BrandController extends Controller
         if ($request->file('brand_image')) {
             unlink($old_image);
             $image = $request->file('brand_image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(166,110)->save('uploads/brands/'.$name_gen);
-            $save_url = 'uploads/brands/'.$name_gen;
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(166, 110)->save('uploads/brands/' . $name_gen);
+            $save_url = 'uploads/brands/' . $name_gen;
 
-            $brandUpdate = (new ProductInfoDataService())->BrandInfoUpdatIfHasImg($request->id, $request->category_id, $request->subcategory_id, $request->brand_name_en, $request->brand_name_bn, $save_url);
+             $brandUpdate = (new ProductInfoDataService())->BrandInfoUpdatIfHasImg($request->id, $request->category_id, $request->subcategory_id, $request->brand_name_en, $request->brand_name_bn, $save_url);
             if($brandUpdate){
+
                 // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
-                return redirect()->route('brands')->with('message','Brand Data Updated Successfully'); //Toastr alert
-            }else {
+                return redirect()->route('brands')->with('message', 'Brand Data Updated Successfully'); //Toastr alert
+            } else {
                 // Session::flash('error', 'Somthing Went wrong! Please try again later');
                 Session::flash('error', 'Somthing Went wrong! Please try again later');
                 return redirect()->back();
@@ -104,9 +110,10 @@ class BrandController extends Controller
             $brandUpdate = (new ProductInfoDataService())->BrandInfoUpdatIfNOImg($request->id, $request->category_id, $request->subcategory_id, $request->brand_name_en, $request->brand_name_bn,);
 
             if($brandUpdate){
+
                 // Session::flash('success', 'Information Has Been Updated Successfully'); //Custom alert
-                return redirect()->route('brands')->with('message','Brand Data Updated Successfully'); //Toastr alert
-            }else {
+                return redirect()->route('brands')->with('message', 'Brand Data Updated Successfully'); //Toastr alert
+            } else {
                 // Session::flash('error', 'Somthing Went wrong! Please try again later');
                 Session::flash('error', 'Somthing Went wrong! Please try again later');
                 return redirect()->back();
@@ -123,6 +130,7 @@ class BrandController extends Controller
         }else {
             // Session::flash('error', 'Somthing Went wrong! Please try again later');
             Session::flash('error', 'Somthing Went wrong! Please try again later');
+ 
             return redirect()->back();
         }
     }

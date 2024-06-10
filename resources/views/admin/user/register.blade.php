@@ -36,7 +36,7 @@ active
             </div>
             <!-- create a new account -->
             <div class="card">
-                <h3 class="text-center mt-4"><span class="text-danger">Hi...!</span><strong class="text-primary">
+                <h3 class="text-center mt-4"><span class="text-danger">Hi!</span><strong class="text-primary">
                         {{Auth::user()->name}} </strong>Create A New User Here</h3>
                 <div class="card-body">
                     <form class="register-form outer-top-xs" role="form" method="POST" action="{{ route('register') }}">
@@ -46,7 +46,6 @@ active
                             <input type="text" placeholder="Enter your name"
                                 class="form-control  @error('name') is-invalid @enderror" id="exampleInputEmail1"
                                 name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -1,12 +1,7 @@
 <div class="sl-sideleft">
-    <div class="input-group input-group-search">
-      <input type="search" name="search" class="form-control" placeholder="Search">
-      <span class="input-group-btn">
-        <button class="btn"><i class="fa fa-search"></i></button>
-      </span><!-- input-group-btn -->
-    </div><!-- input-group -->
+    
 
-    <label class="sidebar-label">Navigation</label>
+    <label class="sidebar-label">Menu</label>
     <div class="sl-sideleft-menu">
       <a href=" {{ route('frontend') }} " class="sl-menu-link " target="_blank">
         <div class="sl-menu-item">
