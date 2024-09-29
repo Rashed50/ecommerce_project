@@ -45,34 +45,7 @@
                     </ul>
                 </div>
 
-                {{-- <div class="cnt-block">
-                    <ul class="list-unstyled list-inline">
-                        <li class="dropdown dropdown-small">
-                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-                                <span class="value"> Currency
-                                </span>
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">টাকা</a></li>
-                                <li><a href="#">USD</a></li>
-                            </ul>
-                        </li>
 
-                        <li class="dropdown dropdown-small">
-                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-                                <span class="value">
-                                    Language
-                                </span>
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">বাংলা</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div> --}}
 
                 <div class="clearfix"></div>
             </div>
@@ -84,17 +57,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
- 
-                    <!-- ============================================================= LOGO ============================================================= -->
-                    {{-- <div class="logo">
-                        <a href=" {{ route('frontend') }} ">
 
-                            <img src=" {{ asset('frontend') }}/assets/images/logo.png" alt="header-image" height="70px"
-                                width="100px">
-
-                        </a>
-                    </div>--}}
-                         <!-- ============================================================= LOGO ============================================================= -->
                     @php
                     $companyProfileData = App\Models\CompanyProfile::orderBy('comp_name_en', 'ASC')->get();
                     @endphp
@@ -110,47 +73,9 @@
                     </div><!-- /.logo -->
                     @endforeach
 
-<<<<<<< HEAD
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div><!-- /.logo-holder -->
 
-                <div class="col-xs-12 col-sm-12 col-md-6 top-search-holder">
-                    <!-- /.contact-row -->
-                    <!-- ============================================================= SEARCH AREA ============================================================= -->
-                    <div class="search-area">
-                        <form>
-                            <div class="control-group">
-
-                                <ul class="categories-filter animate-dropdown">
-                                    <li class="dropdown">
-
-                                        <a class="dropdown-toggle" data-toggle="dropdown"
-                                            href="category.html">Categories <b class="caret"></b></a>
-
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li class="menu-header">Computer</li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                    href="category.html">- Clothing</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                    href="category.html">- Electronics</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                    href="category.html">- Shoes</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                    href="category.html">- Watches</a></li>
-
-                                        </ul>
-                                    </li>
-                                </ul>
-
-                                <input class="search-field" placeholder="Search here..." />
-
-                                <a class="search-button" href="#"></a>
-
-                            </div>
-                        </form>
-                    </div><!-- /.search-area -->
-                    <!-- ============================================================= SEARCH AREA : END ============================================================= -->
-                </div><!-- /.top-search-holder -->
 
                 <div class="col-xs-12 col-sm-12 col-md-3 animate-dropdown top-cart-row">
                     <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
@@ -163,9 +88,9 @@
                                 </div>
                                 <div class="basket-item-count"><span class="count" id="cartProductQty"></span></div>
                                 <div class="total-price-basket">
-                                    <span class="lbl">cart -</span>
+                                    <span class="lbl">Cart -</span>
                                     <span class="total-price">
-                                        <span class="sign">৳</span><span class="value" id="cartProductPrice"></span>
+                                        <span class="sign">$</span><span class="value" id="cartProductPrice"></span>
                                     </span>
                                 </div>
 
@@ -180,24 +105,22 @@
 
                                 <div class="clearfix cart-total">
                                     <div class="pull-right">
-
                                         <span class="text">Sub Total :</span><span class='price' id="cartProductPrice">$</span>
-
                                     </div>
                                     <div class="clearfix"></div>
-
                                     <a href="#" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
                                 </div><!-- /.cart-total-->
 
                             </li>
-                        </ul><!-- /.dropdown-menu-->
+                        </ul>
+                        <!-- /.dropdown-menu-->
                     </div><!-- /.dropdown-cart -->
 
                     <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
                 </div><!-- /.top-cart-row -->
             </div><!-- /.row -->
 
- 
+
         </div><!-- /.container -->
 
     </div><!-- /.main-header -->
@@ -266,6 +189,14 @@
                                         <a href="#">Todays offer</a>
                                 </li>
 
+                                <li class=" dropdown yamm-fw">
+                                    <a href=" {{ route('frontend-about') }} ">About Us</a>
+                                </li>
+
+                                <li class=" dropdown yamm-fw">
+                                    <a href=" {{ route('frontend-contact') }} ">Contact Us</a>
+                                </li>
+
                             </ul><!-- /.navbar-nav -->
                             <div class="clearfix"></div>
                         </div><!-- /.nav-outer -->
@@ -277,6 +208,6 @@
 
     </div><!-- /.header-nav -->
     <!-- ============================================== NAVBAR : END ============================================== -->
- 
+
 </header>
- 
+

@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::factory()->create([
             'name' => 'Super Admin',
-            'email' => 'rashed084050@gmail.com',
+            'email' => 'admin@gmail.com',
             'phone' => '01731540704',
             'image' => 'no image',
-            'password' => Hash::make('rashed084050'),
+            'password' => Hash::make('123456'),
             'role_id' => 1
 
         ]);
     }
 }
 
- 
+

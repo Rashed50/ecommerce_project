@@ -16,6 +16,7 @@ class FrontendController extends Controller
     public function about(){
         $totalCategory = (new FrontendDataService())->TotalNumberOfCategoryCollect();
         $totalBrands = (new FrontendDataService())->TotalNumberOfBrandCollect();
+        $products =  (new FrontendDataService())->TotalNumberOfProductsCollect();
         return view('frontend.about', compact('totalCategory', 'totalBrands', 'products'));
     }
 

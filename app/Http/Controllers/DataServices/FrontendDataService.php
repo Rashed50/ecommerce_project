@@ -15,6 +15,10 @@ class FrontendDataService {
         return Brand::count();
     }
 
+    public function TotalNumberOfProductsCollect(){
+        return Product::count();
+    }
+
     public function CategoryInfoCollect(){
         return Category::orderBy('category_name_en', 'ASC')->get();
     }
@@ -27,7 +31,7 @@ class FrontendDataService {
     public function SingleProductDetails($product_id){
         return Product::where('product_status', 1)->where('product_id', $product_id)->first();
     }
-    
+
     public function SingleProductInfoCollect($productId){
         return Product::where('product_id', $productId)->first();
     }
