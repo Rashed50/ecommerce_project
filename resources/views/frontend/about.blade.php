@@ -129,6 +129,8 @@
     </section>
     <!-- Counter End -->
 
+
+
     <br><br><br>
 </div><!-- /.row -->
 @include('frontend.layouts.footer-slider')
